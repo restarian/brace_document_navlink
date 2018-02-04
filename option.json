@@ -1,0 +1,7 @@
+[
+	{
+		"flag": "-t, --title <string>", 
+		"help": "The title of the navlink heading to use when one is not found. This is also used when the force title flag is set." 
+	}
+]
+
