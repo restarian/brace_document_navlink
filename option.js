@@ -25,6 +25,10 @@ found above using the default title (which can be set with --title), of "Documen
 		"flag": "-f, --force-title", 
 		"help": "The title found in the current page markdown will be used if this is not set. All of the navlink titles will be replaced with" +
 					" the value of the title option if it is set." 
-	}
+	},
+	{
+		"flag": "-u, --url <string>", 
+		"help": "This is the url of the repository server. The default is to use the git remote origin url of the current project if this is not set."
+},
 ]
 
