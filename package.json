@@ -12,7 +12,10 @@
     "url": "git+https://github.com/restarian/brace_document_navlink.git"
   },
   "keywords": [
+    "brace",
+    "navlink",
     "markdown",
+    "navigation",
     "documentation"
   ],
   "author": "Robert Steckroth",

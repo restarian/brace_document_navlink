@@ -19,6 +19,7 @@
 **Bonuses:**
 * Runs in Linux and/or Windows environments.
 * Well commented, unit tested and professional code
+
 **Caveats:**
 * Requires nodejs version 6 or greater
 
