@@ -132,10 +132,10 @@ describe("using stop further progression methodology for dependencies in: "+path
 					expect(nav._origin_url).to.have.keys(Object.keys(require("url").parse("")))
 					expect(nav.origin_url).to.include("https://my/cool/hosting/unit_test/blob/"+nav.branch)
 					var branch = nav.branch
-					utils.Spawn("git", ["rev-parse", "--abbrev-ref", "HEAD"], {cwd: cwd}, (code, stdout, stderr) => {
+					utils.Spawn("git", ["branch"], {cwd: cwd}, (code, stdout, stderr) => {
 
 						expect(stderr).to.be.empty
-						expect(stdout).to.include(branch)
+						expect(stdout).to.include("* "+branch)
 						done()
 					}, function(error) {
 						expect(false, error).to.be.true
