@@ -41,6 +41,8 @@ describe("using stop further progression methodology for dependencies in: "+path
 	var it = maybe(it_will)	
 	it_will.stop = !!process.env.DRY_RUN  
 	it_will.quiet = !!process.env.QUIET
+
+	var cwd = path.join(__dirname, "example")
 	
 	describe("checking for dependencies..", function() { 
 
@@ -62,33 +64,10 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-	})
-
-	describe("using the blank testing example directory -> " + path.join("test", "example"), function() {
-
-		var cwd = path.join(__dirname, "example"), requirejs
-		beforeEach(function() {
-			remove_cache()
-			requirejs = require("requirejs")
-			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
-		})
-
 		it("is able to create a git repository in the directory if there is not one already at " + cwd, function(done) {
 
 			it_will.stop = true 
 			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				it_will.stop = false
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
-		})
-
-		it("is able to set the remote origin url for the git repository at " + cwd, function(done) {
-
-			it_will.stop = true 
-			utils.Spawn("git", ["remote", "add", "origin", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
 				it_will.stop = false
 				done()
 			}, function(error) {
@@ -109,7 +88,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-		it("is able to create first commit" + cwd, function(done) {
+		it("is able to create first commit at" + cwd, function(done) {
 
 			it_will.stop = true 
 			utils.Spawn("git", ["commit", "-m", "'Unit testing generated message'"], {cwd: cwd}, (code, stdout, stderr) => {
@@ -120,6 +99,31 @@ describe("using stop further progression methodology for dependencies in: "+path
 				done()
 			})
 		})
+
+		it("is able to set the remote origin url for the git repository at " + cwd, function(done) {
+
+			it_will.stop = true 
+			utils.Spawn("git", ["remote", "add", "origin", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
+				it_will.stop = false
+				done()
+			}, function(error) {
+				expect(false, error).to.be.true	
+				done()
+			})
+		})
+
+	})
+
+	describe("using the blank testing example directory -> " + path.join("test", "example"), function() {
+
+		var requirejs
+		beforeEach(function() {
+			remove_cache()
+			requirejs = require("requirejs")
+			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
+		})
+
+
 
 		it("finds the correct url data for the project", function(done) {
 
