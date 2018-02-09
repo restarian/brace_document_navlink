@@ -64,43 +64,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-		it("is able to create a git repository in the directory if there is not one already at " + cwd, function(done) {
-
-			it_will.stop = true 
-			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				it_will.stop = false
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
-		})
-
-		it("is able to add all changed to the repository at " + cwd, function(done) {
-
-			it_will.stop = true 
-			utils.Spawn("git", ["add", "--all"], {cwd: cwd}, (code, stdout, stderr) => {
-				it_will.stop = false
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
-		})
-
-		it("is able to create first commit at" + cwd, function(done) {
-
-			it_will.stop = true 
-			utils.Spawn("git", ["commit", "-m", "'Unit testing generated message'"], {cwd: cwd}, (code, stdout, stderr) => {
-				it_will.stop = false
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
-		})
-
-		it("is able to set the remote origin url for the git repository at " + cwd, function(done) {
+		it("is able to find the test"+path.sep+"example submodule at " + cwd, function(done) {
 
 			it_will.stop = true 
 			utils.Spawn("git", ["remote", "add", "origin", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
@@ -123,8 +87,6 @@ describe("using stop further progression methodology for dependencies in: "+path
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 		})
 
-
-
 		it("finds the correct url data for the project", function(done) {
 
 			requirejs(["navlink"], function(navlink) { 
@@ -139,7 +101,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 					utils.Spawn("git", ["branch"], {cwd: cwd}, (code, stdout, stderr) => {
 
 						expect(stderr).to.be.empty
-						expect(stdout).to.include("* "+branch)
+						expect(stdout.replace(/\s*\*\s*([^\n,\r]+)[\n,\r].*/, "$1")).to.equal(branch)
 						done()
 					}, function(error) {
 						expect(false, error).to.be.true
