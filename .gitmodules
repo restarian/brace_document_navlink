@@ -1,0 +1,3 @@
+[submodule "test/example"]
+	path = test/example
+	url = https://github.com/restarian/_dummy_repository.git
