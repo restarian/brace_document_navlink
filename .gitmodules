@@ -1,6 +1,0 @@
-[submodule "test/example"]
-	path = test/example
-	url = https://github.com/restarian/test_module.git
-[submodule "test/new"]
-	path = test/new
-	url = https://github.com/restarian/brace_maybe.git
