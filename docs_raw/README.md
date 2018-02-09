@@ -21,7 +21,7 @@
 * Well commented, unit tested and professional code
 
 **Caveats:**
-* Requires nodejs version 6 or greater
+* Requires nodejs version 5 or greater
 
 This program provides plugin functionality that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
 
