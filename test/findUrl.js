@@ -67,7 +67,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 		it("is able to find the test"+path.sep+"example submodule at " + cwd, function(done) {
 
 			it_will.stop = true 
-			utils.Spawn("git", ["remote", "add", "origin", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
+			utils.Spawn("git", ["config", "--local", "remote.origin.url", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
 				it_will.stop = false
 				done()
 			}, function(error) {
@@ -98,10 +98,10 @@ describe("using stop further progression methodology for dependencies in: "+path
 					expect(nav._origin_url).to.have.keys(Object.keys(require("url").parse("")))
 					expect(nav.origin_url).to.include("https://my/cool/hosting/unit_test/blob/"+nav.branch)
 					var branch = nav.branch
-					utils.Spawn("git", ["branch"], {cwd: cwd}, (code, stdout, stderr) => {
+					utils.Spawn("git", ["rev-parse", "--abbrev-ref", "HEAD"], {cwd: cwd}, (code, stdout, stderr) => {
 
 						expect(stderr).to.be.empty
-						expect(stdout.replace(/\s*\*\s*([^\n,\r]+)[\n,\r].*/, "$1")).to.equal(branch)
+						expect(stdout.replace(/\s/g, "")).to.equal(branch)
 						done()
 					}, function(error) {
 						expect(false, error).to.be.true
