@@ -1,21 +1,25 @@
 module.exports = [
 
 	{ "usage": 
-`The first sub-heading of the markdown file found will be used for the link title which is the first ##[#,..] found in 
-the document. The page navagation list will be inserted (or replaced), at the first markdown underline ---[-,..] found 
-followed by the heading: #[#,..] [specified navlink title]. If an existing navigation list is not found than it will 
-be injected below the first sub-heading (any heading which hase more than one #), found in the file. E.g. The following 
-navigation text is matched in the markdown file for navlink replacement:
+`  The first heading (a heading is one or more '#' followed by text until a newline is reached), of the markdown 
+document will be used as the page title. The navagation link title will be set using the second heading found in
+the document after the first one. The document file name will be used for the navagation link title if two
+markdown headings could not be found within the page.
+  The page navagation list will be inserted (or replaced), at the first markdown underline: ---[-,..] found 
+followed by a mardown heading: #[#,..] ["title"]. If an existing navigation list is not found than it will 
+be injected below the second heading found in the document. If no headings are available then the navagation 
+list will be injected at the very top of the page.
+E.g. The following navigation list text is matched in the markdown document for replacement:
+
+Some text about this doc       <-- this text is not replaced
 
   ----                         <-- this text is not replaced
-  ### Document pages           <-- replaced with same title or with the value set to --title when the --force-title flag is set
-  * [link](url)                <-- replaced with the configured url.
+  ### Document pages           <-- replaced with the same title (Document pages) or with the value set to "title" when the -f flag is set
+  * [link](url)                <-- link will be the navagation title found as the second heading and url will be the "url" option value
   * Some documuntation text    <-- this text is not replaced sense it is not a markdown link
   * [link](url)                <-- this and all subsequent text is not altered sense the above text was not a markdown link
 
-In the example above, only the third line (the markdown link syntax), is altered in the document. If the file does not 
-contain an underline and the #[#,..] [specified navlink title] string than one will be created underneath the sub-heading 
-found above using the default title (which can be set with --title), of "Document pages".`
+In the example above, only the fifth line (the markdown link syntax under the heading), is altered in the document.`
 	},
 	{
 		"flag": "-t, --title <string>", 
@@ -28,7 +32,7 @@ found above using the default title (which can be set with --title), of "Documen
 	},
 	{
 		"flag": "-u, --url <string>", 
-		"help": "This is the url of the repository server. The default is to use the git remote origin url of the current project if this is not set."
-},
+		"help": "This is the url of the repository host. The default is to use the git remote origin url of the project root if this is not set."
+	},
 ]
 
