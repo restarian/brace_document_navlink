@@ -78,7 +78,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 	})
 
-	describe("the createNavlink API member generates the correct navigation link data when", function(done) {
+	describe("the modifyData API member replaces the passed in data", function(done) {
 
 		var requirejs
 		beforeEach(function() {
@@ -97,18 +97,27 @@ describe("using stop further progression methodology for dependencies in: "+path
 					],
 			}
 		]
+
 		var data = {
 			"/home/project/doc/spec/license.md": {
-				title: "The license"
+				file_name: 'license.md',
+				relative_dir: '',
+				document_dir: '/home/myname/company/brace_document/docs_raw',
+				base_dir: '/home/myname/company/brace_document/docs_raw',
+				primary_heading: '# Brace Document\n',
+				secondary_heading: '# License Information\n',
+				content: `# Brace Document
+# License Information
+This is the document page body`
 			},
 		}
 
 		it("all arguments are passed in as empty data objects", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().createNavlink([], {}, "", "", function(nav_list) {
+				navlink().modifyData([], {}, "", function(mutated) {
 
-					expect(nav_list).to.be.empty	
+					expect(mutated).to.be.empty	
 					done()
 
 				}, function(error) { expect(false, error).to.be.true; done() })
@@ -118,72 +127,78 @@ describe("using stop further progression methodology for dependencies in: "+path
 		it("with all arguments are passed in as empty data objects except the structure parameter", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().createNavlink(structure, {}, "", "", function(nav_list) {
+				navlink().modifyData(structure, {}, "", function(mutated) {
 
 					// The title and object link should be empty but the list should still be created.
-					expect(nav_list).to.deep.equal([ "* [](/)", "* Specs", "  * [](/)", "  * [](/)" ])
+					expect(mutated).to.deep.equal({})
 					done()
 
 				}, function(error) { expect(false, error).to.be.true; done() })
 			})
 		})
 
-		it("with a structure and link url but no data and no page path", function(done) {
+		it("with a structure and a incomplete data object and an empty link url", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().createNavlink(structure, {}, "", "https://this/url/different", function(nav_list) {
+				navlink().modifyData(structure, data, "", function(mutated) {
 
-					// The title and object link should be empty but the list should still be created.
-					expect(nav_list).to.deep.equal([ 
-						"* [](https://this/url/different/)", 
-						"* Specs", 
-						"  * [](https://this/url/different/)", 
-						"  * [](https://this/url/different/)" 
-					])
+					//console.log(mutated["/home/project/doc/spec/license.md"].content)
+					expect(mutated).to.deep.equal(
+					{
+						"/home/project/doc/spec/license.md": {
+							"base_dir": "/home/myname/company/brace_document/docs_raw",
+							"content": "# Brace Document\n# License Information\n\n---\n### Document pages\n* [](/)\n* Specs\n  * [](/)\n  * **/**\n\n---\nThis is the document page body",
+							"document_dir": "/home/myname/company/brace_document/docs_raw",
+							"file_name": "license.md",
+							"primary_heading": "# Brace Document\n",
+							"relative_dir": "",
+							"secondary_heading": "# License Information\n"
+						}
+					})
+
 					done()
 
 				}, function(error) { expect(false, error).to.be.true; done() })
 			})
 		})
 
-		it("with a structure and link url and only one data entry and a page_path for one of the other stucture entities", function(done) {
+
+		it("with a structure and a incomplete data object that has only one line of page text and an link url and the title set to GooD deal", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().createNavlink(structure, data, "/home/project/doc/spec/meta.md", "https://this/url/different", function(nav_list) {
+				var data = {
+					"/home/project/doc/spec/license.md": {
+						file_name: 'license.md',
+						relative_dir: '',
+						document_dir: '/home/myname/company/brace_document/docs_raw',
+						base_dir: '/home/myname/company/brace_document/docs_raw',
+						primary_heading: '',
+						secondary_heading: '',
+						content: `This is the document page body`
+					},
+				}
 
-					// The title and object link should be empty but the list should still be created.
-					expect(nav_list).to.deep.equal([ 
-						"* [](https://this/url/different/)", 
-						"* Specs", 
-						"  * **/**",
-						"  * [The license](https://this/url/different/)", 
-					])
+				var nav = navlink()
+				nav.title = "GooD deal"
+				nav.modifyData(structure, data, "https://a/good/url", function(mutated) {
+
+					//console.log(mutated["/home/project/doc/spec/license.md"].content)
+					expect(mutated).to.deep.equal(
+					{
+						"/home/project/doc/spec/license.md": {
+							"base_dir": "/home/myname/company/brace_document/docs_raw",
+							"content": "\n\n---\n### GooD deal\n* [](https://a/good/url/)\n* Specs\n  * [](https://a/good/url/)\n  * **/**\n\n---\nThis is the document page body",
+							"document_dir": "/home/myname/company/brace_document/docs_raw",
+							"file_name": "license.md",
+							"primary_heading": "",
+							"relative_dir": "",
+							"secondary_heading": ""
+						}
+					})
+
 					done()
 
 				}, function(error) { expect(false, error).to.be.true; done() })
-			})
-		})
-		
-		it("-- synchronously -- with a structure and link url and only one data entry and a page_path for that data entry", function() {
-			requirejs(["./navlink"], function(navlink) { 
-
-			data["/home/project/doc/spec/meta.md"] = {
-
-				title: "Meta data",
-				relative_dir: "spec",
-				file_name: "meta.md",
-			}
-
-			// The createNavlink member is and should be asynchronous so it is checked this way once too.
-			expect(
-				navlink().createNavlink(structure, data, "/home/project/doc/spec/license.md", "https://this/url/different", function(nav_list) {
-				}, function(error) { expect(false, error).to.be.true; done() })
-			).to.deep.equal([ 
-					"* [](https://this/url/different/)", 
-					"* Specs", 
-					"  * [Meta data](https://this/url/different/spec/meta.md)",
-					"  * **The license**", 
-				])
 			})
 		})
 	})

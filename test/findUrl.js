@@ -90,7 +90,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 		it("finds the correct url data for the project", function(done) {
 
-			requirejs(["navlink"], function(navlink) { 
+			requirejs(["./navlink"], function(navlink) { 
 
 				var nav = navlink()
 
@@ -104,17 +104,11 @@ describe("using stop further progression methodology for dependencies in: "+path
 						expect(stderr).to.be.empty
 						expect(stdout.replace(/\s/g, "")).to.equal(branch)
 						done()
-					}, function(error) {
-						expect(false, error).to.be.true
-						done()
-					})
-				}, function(error) {
-					expect(false, error).to.be.true
-					done()
-				})
+					}, function(error) { expect(false, error).to.be.true; done() })
+				}, function(error) { expect(false, error).to.be.true; done() })
 			})
-		})
 		
+		})
 	})
 })
 
