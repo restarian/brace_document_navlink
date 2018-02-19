@@ -93,14 +93,14 @@ describe("using stop further progression methodology for dependencies in: "+path
 			{ 
 				"specs": [
 					"/home/project/doc/spec/meta.md",
-					"/home/project/doc/spec/license.md",
+					"/home/project/doc/spec/license_file.md",
 					],
 			}
 		]
 
 		var data = {
-			"/home/project/doc/spec/license.md": {
-				file_name: 'license.md',
+			"/home/project/doc/spec/license_file.md": {
+				file_name: 'license_file.md',
 				relative_dir: '',
 				document_dir: '/home/myname/company/brace_document/docs_raw',
 				base_dir: '/home/myname/company/brace_document/docs_raw',
@@ -142,14 +142,13 @@ This is the document page body`
 
 				navlink().modifyData(structure, data, "", function(mutated) {
 
-					//console.log(mutated["/home/project/doc/spec/license.md"].content)
 					expect(mutated).to.deep.equal(
 					{
-						"/home/project/doc/spec/license.md": {
+						"/home/project/doc/spec/license_file.md": {
 							"base_dir": "/home/myname/company/brace_document/docs_raw",
-							"content": "# Brace Document\n# License Information\n\n---\n### Document pages\n* [](/)\n* Specs\n  * [](/)\n  * **/**\n\n---\nThis is the document page body",
+							"content": "# Brace Document\n# License Information\n\n---\n### Document pages\n* [pending..](/)\n* Specs\n  * [pending..](/)\n  * **License information**\n\n---\nThis is the document page body",
 							"document_dir": "/home/myname/company/brace_document/docs_raw",
-							"file_name": "license.md",
+							"file_name": "license_file.md",
 							"primary_heading": "# Brace Document\n",
 							"relative_dir": "",
 							"secondary_heading": "# License Information\n"
@@ -167,8 +166,8 @@ This is the document page body`
 			requirejs(["./navlink"], function(navlink) { 
 
 				var data = {
-					"/home/project/doc/spec/license.md": {
-						file_name: 'license.md',
+					"/home/project/doc/spec/license_file.md": {
+						file_name: 'license_file.md',
 						relative_dir: '',
 						document_dir: '/home/myname/company/brace_document/docs_raw',
 						base_dir: '/home/myname/company/brace_document/docs_raw',
@@ -179,17 +178,16 @@ This is the document page body`
 				}
 
 				var nav = navlink()
-				nav.title = "GooD deal"
+				nav.option.title = "GooD deal"
 				nav.modifyData(structure, data, "https://a/good/url", function(mutated) {
 
-					//console.log(mutated["/home/project/doc/spec/license.md"].content)
 					expect(mutated).to.deep.equal(
 					{
-						"/home/project/doc/spec/license.md": {
+						"/home/project/doc/spec/license_file.md": {
 							"base_dir": "/home/myname/company/brace_document/docs_raw",
-							"content": "\n\n---\n### GooD deal\n* [](https://a/good/url/)\n* Specs\n  * [](https://a/good/url/)\n  * **/**\n\n---\nThis is the document page body",
+							"content": "\n\n---\n### GooD deal\n* [pending..](https://a/good/url/)\n* Specs\n  * [pending..](https://a/good/url/)\n  * **License file**\n\n---\nThis is the document page body",
 							"document_dir": "/home/myname/company/brace_document/docs_raw",
-							"file_name": "license.md",
+							"file_name": "license_file.md",
 							"primary_heading": "",
 							"relative_dir": "",
 							"secondary_heading": ""

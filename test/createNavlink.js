@@ -99,7 +99,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 		]
 		var data = {
 			"/home/project/doc/spec/license.md": {
-				title: "The license"
+				secondary_heading: "The license"
 			},
 		}
 
@@ -121,7 +121,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 				navlink().createNavlink(structure, {}, "", "", function(nav_list) {
 
 					// The title and object link should be empty but the list should still be created.
-					expect(nav_list).to.deep.equal([ "* [](/)", "* Specs", "  * [](/)", "  * [](/)" ])
+					expect(nav_list).to.deep.equal([ "* [pending..](/)", "* Specs", "  * [pending..](/)", "  * [pending..](/)" ])
 					done()
 
 				}, function(error) { expect(false, error).to.be.true; done() })
@@ -135,10 +135,10 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 					// The title and object link should be empty but the list should still be created.
 					expect(nav_list).to.deep.equal([ 
-						"* [](https://this/url/different/)", 
+						"* [pending..](https://this/url/different/)", 
 						"* Specs", 
-						"  * [](https://this/url/different/)", 
-						"  * [](https://this/url/different/)" 
+						"  * [pending..](https://this/url/different/)", 
+						"  * [pending..](https://this/url/different/)" 
 					])
 					done()
 
@@ -153,9 +153,9 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 					// The title and object link should be empty but the list should still be created.
 					expect(nav_list).to.deep.equal([ 
-						"* [](https://this/url/different/)", 
+						"* [pending..](https://this/url/different/)", 
 						"* Specs", 
-						"  * **/**",
+						"  * **pending..**",
 						"  * [The license](https://this/url/different/)", 
 					])
 					done()
@@ -179,7 +179,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 				navlink().createNavlink(structure, data, "/home/project/doc/spec/license.md", "https://this/url/different", function(nav_list) {
 				}, function(error) { expect(false, error).to.be.true; done() })
 			).to.deep.equal([ 
-					"* [](https://this/url/different/)", 
+					"* [pending..](https://this/url/different/)", 
 					"* Specs", 
 					"  * [Meta data](https://this/url/different/spec/meta.md)",
 					"  * **The license**", 
