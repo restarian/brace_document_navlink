@@ -23,7 +23,7 @@ In the example above, only the fifth line (the markdown link syntax under the he
 	},
 	{
 		"flag": "-t, --title <string>", 
-		"help": "The title of the navlink heading to use when one is not found. This is also used when the force title flag is set." 
+		"help": "The title of the navlink heading to use when one is not found. This is also used when the force title flag is set.",
 		"default": "Document pages", 
 	},
 	{
