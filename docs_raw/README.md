@@ -26,7 +26,7 @@
 This program provides plugin functionality that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
 
 ### The Brace Document Navlink document pages were processed with Brace document navlink too.
-This is the command used to create the document pages you are reading now: ```bash > node bin/document navlink.js -vre -t "Brace Document Navlink" -b docs docs_raw```
+This is the command used to create the document pages you are reading now: ```bash > node path/to/brace_document/bin/document.js -d ./ -vre -t "Brace Document Navlink" -b docs docs_raw```
 
 ### Below is a simple example of a markdown page before and after processing with Brace document navlink. 
 ---- 

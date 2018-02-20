@@ -4,8 +4,10 @@
 ----
 ### Brace document navlink
 * [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/README.md)
-* [Command line program options](https://github.com/restarian/brace_document_navlink/blob/master/docs/usage.md)
+* [Making a difference with brace document navlink ](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributing.md)
+* [Contributor code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/code_of_conduct.md)
 * **How it works**
+* [Command line program options](https://github.com/restarian/brace_document_navlink/blob/master/docs/usage.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license.md)
   * [Project specification data](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/specification.md)
