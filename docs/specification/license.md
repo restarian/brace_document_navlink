@@ -3,6 +3,12 @@
 
 ----
 ### Document pages
+* [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/README.md)
+* [Command line program options](https://github.com/restarian/brace_document_navlink/blob/master/docs/usage.md)
+* [How it works](https://github.com/restarian/brace_document_navlink/blob/master/docs/mutation.md)
+* Specification
+  * **License information**
+  * [Project specification data](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/specification.md)
 
 ----
 

@@ -9,6 +9,12 @@
 
 ----
 ### Document pages
+* **Synopsis**
+* [Command line program options](https://github.com/restarian/brace_document_navlink/blob/master/docs/usage.md)
+* [How it works](https://github.com/restarian/brace_document_navlink/blob/master/docs/mutation.md)
+* Specification
+  * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license.md)
+  * [Project specification data](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/specification.md)
 
 ----
 
@@ -26,7 +32,7 @@
 This program provides plugin functionality that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
 
 ### The Brace Document Navlink document pages were processed with Brace document navlink too.
-This is the command used to create the document pages you are reading now: ```bash > node bin/document navlink.js -vr -t "Brace Document Navlink" -b docs docs_raw```
+This is the command used to create the document pages you are reading now: ```bash > node bin/document navlink.js -vre -t "Brace Document Navlink" -b docs docs_raw```
 
 ### Below is a simple example of a markdown page before and after processing with Brace document navlink. 
 ---- 
@@ -47,16 +53,7 @@ Some text about the project here
 ## The main page
 
 ----
-### Document pages
-* **Synopsis**
-* [Command usage](https://github.com/yourcompany/my_module/blob/master/docs/usage.md)
-* Development
-  * [The todo sheet ](https://github.com/yourcompany/my_module/blob/master/docs/development/todo.md)
-* Specification
-  * [License information](https://github.com/yourcompany/my_module/blob/master/docs/specification/license.md)
-  * [Project Specs](https://github.com/yourcompany/my_module/blob/master/docs/specification/specification.md)
-
-----
+### Document pages* [Command usage](https://github.com/yourcompany/my_module/blob/master/docs/usage.md)  * [The todo sheet ](https://github.com/yourcompany/my_module/blob/master/docs/development/todo.md)  * [License information](https://github.com/yourcompany/my_module/blob/master/docs/specification/license.md)----
 
 Some text about the project here
 ```

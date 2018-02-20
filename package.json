@@ -1,6 +1,7 @@
 {
   "name": "brace_document_navlink",
   "version": "0.3.1",
+  "priority": "20",
   "description": "A project documentation mutation plugin to auto-add page navigation to markdown files",
   "main": "lib/brace_document_navlink.js",
   "bin": {},
@@ -12,14 +13,16 @@
     "url": "git+https://github.com/restarian/brace_document_navlink.git"
   },
   "keywords": [
-    "brace",
-    "navlink",
     "markdown",
     "navigation",
-    "documentation"
+    "documentation",
+    "generation"
   ],
-  "author": "Robert Steckroth",
-  "license": "MIT",
+	"author": {
+		"name": "Robert Steckroth",
+		"email": "RobertSteckroth@gmail.com"
+	},
+	"license": "MIT",
   "bugs": {
     "url": "https://github.com/restarian/brace_document_navlink/issues"
   },
@@ -34,5 +37,42 @@
   "dependencies": {
     "amdefine": "^1.0.1",
     "bracket_print": "^0.9.10"
-  }
+  },
+	"technologies": [
+		{
+			"name": "VIM",
+			"description": "As an IDE",
+			"url": "https://vim.org"
+		},
+		{
+			"name": "Windows 10",
+			"description": "For unit testing and as the base operating system",
+			"url": "https://www.microsoft.com/en-us/software-download/windows10"
+		},
+		{
+			"name": "Ubuntu on Windows",
+			"description": "As the development operating environment",
+			"url": "https://www.microsoft.com/en-us/store/p/ubuntu/9nblggh4msv6"
+		},
+		{
+			"name": "Git",
+			"description": "For repository management",
+			"url": "https://git-scm.com"
+		},
+		{
+			"name": "Github",
+			"description": "For repository storage",
+			"url": "https://github.com"
+		},
+		{
+			"name": "NPM",
+			"description": "For module storage",
+			"url": "https://npmjs.org"
+		},
+		{
+			"name": "Blender",
+			"description": "For logo design and rendering",
+			"url": "https://blender.org"
+		}
+	]
 }

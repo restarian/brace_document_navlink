@@ -44,7 +44,6 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 	describe("checking for dependencies..", function() { 
 
-		/*
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
 			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
@@ -52,6 +51,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 			done()
 		})
 
+		/*
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
 			utils.Spawn("git", [], function() {
@@ -169,7 +169,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 			data["/home/project/doc/spec/meta.md"] = {
 
-				title: "Meta data",
+				secondary_heading: "## Meta Data",
 				relative_dir: "spec",
 				file_name: "meta.md",
 			}
