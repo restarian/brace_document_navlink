@@ -76,37 +76,39 @@ describe("using stop further progression methodology for dependencies in: "+path
 		})
 		*/
 
+
 	})
 
-	describe("the createNavlink API member generates the correct navigation link data when", function(done) {
+	describe("the acquireNavlink API member generates the correct navigation link data when", function(done) {
 
-		var requirejs
+		var requirejs, structure, data
 		beforeEach(function() {
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
+
+			structure = [
+				"/home/project/doc/about.md",
+				{ 
+					"specs": [
+						"/home/project/doc/spec/meta.md",
+						"/home/project/doc/spec/license.md",
+						],
+				}
+			]
+			data = {
+				"/home/project/doc/spec/license.md": {
+					secondary_heading: "The license"
+				},
+			}
 		})
 
 
-		var structure = [
-			"/home/project/doc/about.md",
-			{ 
-				"specs": [
-					"/home/project/doc/spec/meta.md",
-					"/home/project/doc/spec/license.md",
-					],
-			}
-		]
-		var data = {
-			"/home/project/doc/spec/license.md": {
-				secondary_heading: "The license"
-			},
-		}
 
 		it("all arguments are passed in as empty data objects", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().createNavlink([], {}, "", "", function(nav_list) {
+				navlink().acquireNavlink([], {}, "", "", function(nav_list) {
 
 					expect(nav_list).to.be.empty	
 					done()
@@ -118,10 +120,10 @@ describe("using stop further progression methodology for dependencies in: "+path
 		it("with all arguments are passed in as empty data objects except the structure parameter", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().createNavlink(structure, {}, "", "", function(nav_list) {
+				navlink().acquireNavlink(structure, {}, "", "", function(nav_list) {
 
 					// The title and object link should be empty but the list should still be created.
-					expect(nav_list).to.deep.equal([ "* [pending..](/)", "* Specs", "  * [pending..](/)", "  * [pending..](/)" ])
+					expect(nav_list).to.deep.equal([ "* [About](/)", "* Specs", "  * [Meta](/)", "  * [License](/)" ])
 					done()
 
 				}, function(error) { expect(false, error).to.be.true; done() })
@@ -131,14 +133,14 @@ describe("using stop further progression methodology for dependencies in: "+path
 		it("with a structure and link url but no data and no page path", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().createNavlink(structure, {}, "", "https://this/url/different", function(nav_list) {
+				navlink().acquireNavlink(structure, {}, "", "https://this/url/different", function(nav_list) {
 
 					// The title and object link should be empty but the list should still be created.
 					expect(nav_list).to.deep.equal([ 
-						"* [pending..](https://this/url/different/)", 
+						"* [About](https://this/url/different/)", 
 						"* Specs", 
-						"  * [pending..](https://this/url/different/)", 
-						"  * [pending..](https://this/url/different/)" 
+						"  * [Meta](https://this/url/different/)", 
+						"  * [License](https://this/url/different/)" 
 					])
 					done()
 
@@ -149,14 +151,14 @@ describe("using stop further progression methodology for dependencies in: "+path
 		it("with a structure and link url and only one data entry and a page_path for one of the other stucture entities", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().createNavlink(structure, data, "/home/project/doc/spec/meta.md", "https://this/url/different", function(nav_list) {
+				navlink().acquireNavlink(structure, data, "/home/project/doc/spec/meta.md", "https://this/url/different", function(nav_list) {
 
 					// The title and object link should be empty but the list should still be created.
 					expect(nav_list).to.deep.equal([ 
-						"* [pending..](https://this/url/different/)", 
+						"* [About](https://this/url/different/)", 
 						"* Specs", 
-						"  * **pending..**",
-						"  * [The license](https://this/url/different/)", 
+						"  * **Meta**",
+						"  * [License](https://this/url/different/)", 
 					])
 					done()
 
@@ -174,12 +176,12 @@ describe("using stop further progression methodology for dependencies in: "+path
 				file_name: "meta.md",
 			}
 
-			// The createNavlink member is and should be asynchronous so it is checked this way once too.
+			// The acquireNavlink member is and should be asynchronous so it is checked this way once too.
 			expect(
-				navlink().createNavlink(structure, data, "/home/project/doc/spec/license.md", "https://this/url/different", function(nav_list) {
+				navlink().acquireNavlink(structure, data, "/home/project/doc/spec/license.md", "https://this/url/different", function(nav_list) {
 				}, function(error) { expect(false, error).to.be.true; done() })
 			).to.deep.equal([ 
-					"* [pending..](https://this/url/different/)", 
+					"* [About](https://this/url/different/)", 
 					"* Specs", 
 					"  * [Meta data](https://this/url/different/spec/meta.md)",
 					"  * **The license**", 

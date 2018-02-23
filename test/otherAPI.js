@@ -78,7 +78,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 	})
 
-	describe("the modifyData API member replaces the passed in data", function(done) {
+	describe("the other API members such as", function(done) {
 
 		var requirejs
 		beforeEach(function() {
@@ -87,101 +87,28 @@ describe("using stop further progression methodology for dependencies in: "+path
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 		})
 
-
-		var structure = [
-			"/home/project/doc/about.md",
-			{ 
-				"specs": [
-					"/home/project/doc/spec/meta.md",
-					"/home/project/doc/spec/license_file.md",
-					],
-			}
-		]
-
-		var data = {
-			"/home/project/doc/spec/license_file.md": {
-				primary_heading: '# Brace Document\n',
-				secondary_heading: '# License Information\n',
-				content: `# Brace Document
-# License Information
-This is the document page body`
-			},
-		}
-
-		it("all arguments are passed in as empty data objects", function(done) {
+		it("the sentenceConvert member works as expected", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
-
-				navlink().modifyData([], {}, "", function(mutated) {
-
-					expect(mutated).to.be.empty	
-					done()
-
-				}, function(error) { expect(false, error).to.be.true; done() })
-			})
-		})
-
-		it("with all arguments are passed in as empty data objects except the structure parameter", function(done) {
-			requirejs(["./navlink"], function(navlink) { 
-
-				navlink().modifyData(structure, {}, "", function(mutated) {
-
-					// The title and object link should be empty but the list should still be created.
-					expect(mutated).to.deep.equal({})
-					done()
-
-				}, function(error) { expect(false, error).to.be.true; done() })
-			})
-		})
-
-		it("with a structure and a incomplete data object and an empty link url", function(done) {
-			requirejs(["./navlink"], function(navlink) { 
-
-				navlink().modifyData(structure, data, "", function(mutated) {
-
-					expect(mutated).to.deep.equal(
-					{
-						"/home/project/doc/spec/license_file.md": {
-							"content": "# Brace Document\n# License Information\n\n---\n### Document pages\n* [About](/)\n* Specs\n  * [Meta](/)\n  * **License file**\n\n---\nThis is the document page body",
-							"primary_heading": "# Brace Document\n",
-							"secondary_heading": "# License Information\n"
-						}
-					})
-
-					done()
-
-				}, function(error) { expect(false, error).to.be.true; done() })
-			})
-		})
-
-
-		it("with a structure and a incomplete data object that has only one line of page text and an link url and the title set to GooD deal", function(done) {
-			requirejs(["./navlink"], function(navlink) { 
-
-				var data = {
-					"/home/project/doc/spec/license_file.md": {
-						primary_heading: '',
-						secondary_heading: '',
-						content: `This is the document page body`
-					},
-				}
 
 				var nav = navlink()
-				nav.option.title = "GooD deal"
-				nav.modifyData(structure, data, "https://a/good/url", function(mutated) {
+				expect(nav.sentenceConvert("cooljoes")).to.equal("Cooljoes")
+				expect(nav.sentenceConvert("cool joes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert("cool Joes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert("Cool Joes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert("CoolJoes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert(" CoolJoes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert(" CoolJoes\n")).to.equal("Cool joes")
 
-					expect(mutated).to.deep.equal(
-					{
-						"/home/project/doc/spec/license_file.md": {
-							"content": "\n\n---\n### GooD deal\n* [About](https://a/good/url/)\n* Specs\n  * [Meta](https://a/good/url/)\n  * **License file**\n\n---\nThis is the document page body",
-							"primary_heading": "",
-							"secondary_heading": ""
-						}
-					})
+				expect(nav.sentenceConvert("Cool JoesHere   man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert("Cool Joes_\n_here-man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert("-Cool Joes_here-man")).to.equal("Cool joes here man")
 
-					done()
-
+				expect(nav.sentenceConvert("--_Cool Joes_here-man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert(".Cool Joes+here-man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert("  .!@Cool$@#\n*&( Joes+here()()(-man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert(".!  @Cool\t[]&#*(\n\t\r$@#*&( Joes+here()()(-man")).to.equal("Cool joes here man")
+				done()
 				}, function(error) { expect(false, error).to.be.true; done() })
-			})
 		})
 	})
 })
