@@ -44,7 +44,6 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 	describe("checking for dependencies..", function() { 
 
-		/*
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
 			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
@@ -52,15 +51,13 @@ describe("using stop further progression methodology for dependencies in: "+path
 			done()
 		})
 
+		/*
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
 			utils.Spawn("git", [], function() {
 				it_will.stop = false 
 				done()
-			}, function() {
-				expect(false, "git is not available as a system program").to.be.true
-				done()
-			})
+			}, function(error) { expect(false, error).to.be.true; done() })
 		})
 
 		it("is able to find the test"+path.sep+"example submodule at " + cwd, function(done) {
@@ -69,10 +66,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 			utils.Spawn("git", ["config", "--local", "remote.origin.url", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
 				it_will.stop = false
 				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
+			}, function(error) { expect(false, error).to.be.true; done() })
 		})
 		*/
 
@@ -80,33 +74,32 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 	describe("the modifyData API member replaces the passed in data", function(done) {
 
-		var requirejs
+		var requirejs, structure, data
 		beforeEach(function() {
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
-		})
 
+			structure = [
+				"/home/project/doc/about.md",
+				{ 
+					"specs": [
+						"/home/project/doc/spec/meta.md",
+						"/home/project/doc/spec/license_file.md",
+						],
+				}
+			]
 
-		var structure = [
-			"/home/project/doc/about.md",
-			{ 
-				"specs": [
-					"/home/project/doc/spec/meta.md",
-					"/home/project/doc/spec/license_file.md",
-					],
-			}
-		]
-
-		var data = {
-			"/home/project/doc/spec/license_file.md": {
-				primary_heading: '# Brace Document\n',
-				secondary_heading: '# License Information\n',
-				content: `# Brace Document
+			data = {
+				"/home/project/doc/spec/license_file.md": {
+					primary_heading: '# Brace Document\n',
+					secondary_heading: '# License Information\n',
+					content: `# Brace Document
 # License Information
-This is the document page body`
-			},
-		}
+	This is the document page body`
+				},
+			}
+		})
 
 		it("all arguments are passed in as empty data objects", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
@@ -136,20 +129,21 @@ This is the document page body`
 		it("with a structure and a incomplete data object and an empty link url", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().modifyData(structure, data, "", function(mutated) {
+				navlink(function() { 
+					this.modifyData(structure, data, "", function(mutated) {
 
-					expect(mutated).to.deep.equal(
-					{
-						"/home/project/doc/spec/license_file.md": {
-							"content": "# Brace Document\n# License Information\n\n---\n### Document pages\n* [About](/)\n* Specs\n  * [Meta](/)\n  * **License file**\n\n---\nThis is the document page body",
-							"primary_heading": "# Brace Document\n",
-							"secondary_heading": "# License Information\n"
-						}
-					})
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/license_file.md": {
+								"content": "# Brace Document\n# License Information\n\n---\n### Document pages\n* [About](/about.md)\n* Specs\n  * [Meta](/specs/meta.md)\n  * **License file**\n\n---\n\tThis is the document page body",
+								"primary_heading": "# Brace Document\n",
+								"secondary_heading": "# License Information\n"
+							}
+						})
+						done()
 
-					done()
-
-				}, function(error) { expect(false, error).to.be.true; done() })
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
 			})
 		})
 
@@ -172,12 +166,11 @@ This is the document page body`
 					expect(mutated).to.deep.equal(
 					{
 						"/home/project/doc/spec/license_file.md": {
-							"content": "\n\n---\n### GooD deal\n* [About](https://a/good/url/)\n* Specs\n  * [Meta](https://a/good/url/)\n  * **License file**\n\n---\nThis is the document page body",
+							"content": "\n\n---\n### GooD deal\n* [About](https://a/good/url/about.md)\n* Specs\n  * [Meta](https://a/good/url/specs/meta.md)\n  * **License file**\n\n---\nThis is the document page body",
 							"primary_heading": "",
 							"secondary_heading": ""
 						}
 					})
-
 					done()
 
 				}, function(error) { expect(false, error).to.be.true; done() })

@@ -57,10 +57,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 			utils.Spawn("git", [], function() {
 				it_will.stop = false 
 				done()
-			}, function() {
-				expect(false, "git is not available as a system program").to.be.true
-				done()
-			})
+			}, function(error) { expect(false, error).to.be.true; done() })
 		})
 
 		it("is able to find the test"+path.sep+"example submodule at " + cwd, function(done) {
@@ -69,17 +66,14 @@ describe("using stop further progression methodology for dependencies in: "+path
 			utils.Spawn("git", ["config", "--local", "remote.origin.url", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
 				it_will.stop = false
 				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
+			}, function(error) { expect(false, error).to.be.true; done() })
 		})
 		*/
 
 
 	})
 
-	describe("the acquireNavlink API member generates the correct navigation link data when", function(done) {
+	describe("the acquireNavlink API member generates the correct navigation link data when", function() {
 
 		var requirejs, structure, data
 		beforeEach(function() {
@@ -96,19 +90,12 @@ describe("using stop further progression methodology for dependencies in: "+path
 						],
 				}
 			]
-			data = {
-				"/home/project/doc/spec/license.md": {
-					secondary_heading: "The license"
-				},
-			}
 		})
-
-
 
 		it("all arguments are passed in as empty data objects", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().acquireNavlink([], {}, "", "", function(nav_list) {
+				navlink().acquireNavlink([], "", "", function(nav_list) {
 
 					expect(nav_list).to.be.empty	
 					done()
@@ -117,30 +104,39 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-		it("with all arguments are passed in as empty data objects except the structure parameter", function(done) {
+		it("with all arguments are passed in empty except the structure parameter", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().acquireNavlink(structure, {}, "", "", function(nav_list) {
+				var nav = navlink()
 
+				nav.option.indentation = "  "
+				nav.acquireNavlink(structure, "", "", function(nav_list) {
 					// The title and object link should be empty but the list should still be created.
-					expect(nav_list).to.deep.equal([ "* [About](/)", "* Specs", "  * [Meta](/)", "  * [License](/)" ])
-					done()
+					expect(nav_list).to.deep.equal([ "* [About](/about.md)", "* Specs", "  * [Meta](/specs/meta.md)", "  * [License](/specs/license.md)" ])
+
+					nav.option.indentation = "@"
+					nav.acquireNavlink(structure, "", "", function(nav_list) {
+						// The title and object link should be empty but the list should still be created.
+						expect(nav_list).to.deep.equal([ "* [About](/about.md)", "* Specs", "@* [Meta](/specs/meta.md)", "@* [License](/specs/license.md)" ])
+						done()
+					}, function(error) { expect(false, error).to.be.true; done() })
 
 				}, function(error) { expect(false, error).to.be.true; done() })
+
 			})
 		})
 
-		it("with a structure and link url but no data and no page path", function(done) {
+		it("with a structure and link url and an empty current_page", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().acquireNavlink(structure, {}, "", "https://this/url/different", function(nav_list) {
+				navlink().acquireNavlink(structure, "", "https://this/url/different", function(nav_list) {
 
 					// The title and object link should be empty but the list should still be created.
 					expect(nav_list).to.deep.equal([ 
-						"* [About](https://this/url/different/)", 
+						"* [About](https://this/url/different/about.md)", 
 						"* Specs", 
-						"  * [Meta](https://this/url/different/)", 
-						"  * [License](https://this/url/different/)" 
+						"  * [Meta](https://this/url/different/specs/meta.md)", 
+						"  * [License](https://this/url/different/specs/license.md)" 
 					])
 					done()
 
@@ -148,17 +144,17 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-		it("with a structure and link url and only one data entry and a page_path for one of the other stucture entities", function(done) {
+		it("with a structure and link url and a current_path for one of the other stucture entities", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().acquireNavlink(structure, data, "/home/project/doc/spec/meta.md", "https://this/url/different", function(nav_list) {
+				navlink().acquireNavlink(structure, "/home/project/doc/spec/meta.md", "https://this/url/different", function(nav_list) {
 
 					// The title and object link should be empty but the list should still be created.
 					expect(nav_list).to.deep.equal([ 
-						"* [About](https://this/url/different/)", 
+						"* [About](https://this/url/different/about.md)", 
 						"* Specs", 
 						"  * **Meta**",
-						"  * [License](https://this/url/different/)", 
+						"  * [License](https://this/url/different/specs/license.md)", 
 					])
 					done()
 
@@ -166,26 +162,20 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 		
-		it("-- synchronously -- with a structure and link url and only one data entry and a page_path for that data entry", function() {
+		it("-- synchronously -- with a structure and link url and a current_path for a structure entry", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-			data["/home/project/doc/spec/meta.md"] = {
-
-				secondary_heading: "## Meta Data",
-				relative_dir: "spec",
-				file_name: "meta.md",
-			}
-
-			// The acquireNavlink member is and should be asynchronous so it is checked this way once too.
-			expect(
-				navlink().acquireNavlink(structure, data, "/home/project/doc/spec/license.md", "https://this/url/different", function(nav_list) {
-				}, function(error) { expect(false, error).to.be.true; done() })
-			).to.deep.equal([ 
-					"* [About](https://this/url/different/)", 
-					"* Specs", 
-					"  * [Meta data](https://this/url/different/spec/meta.md)",
-					"  * **The license**", 
-				])
+				// The acquireNavlink member is and should be asynchronous so it is checked this way once too.
+				expect(
+					navlink().acquireNavlink(structure, "/home/project/doc/spec/license.md", "https://this/url/different", function(nav_list) {
+					}, function(error) { expect(false, error).to.be.true; done() })
+				).to.deep.equal([ 
+						"* [About](https://this/url/different/about.md)", 
+						"* Specs", 
+						"  * [Meta](https://this/url/different/specs/meta.md)",
+						"  * **License**", 
+					])
+				done()
 			})
 		})
 	})

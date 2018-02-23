@@ -58,24 +58,16 @@ describe("using stop further progression methodology for dependencies in: "+path
 			utils.Spawn("git", [], function() {
 				it_will.stop = false 
 				done()
-			}, function() {
-				expect(false, "git is not available as a system program").to.be.true
-				done()
-			})
+			}, function(error) { expect(false, error).to.be.true; done() })
 		})
 
 		it("is able to find the test"+path.sep+"example submodule at " + cwd, function(done) {
-
 			it_will.stop = true 
 			utils.Spawn("git", ["config", "--local", "remote.origin.url", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
 				it_will.stop = false
 				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
+			}, function(error) { expect(false, error).to.be.true; done() })
 		})
-
 
 	})
 
@@ -89,23 +81,22 @@ describe("using stop further progression methodology for dependencies in: "+path
 		})
 
 		it("finds the correct url data for the project", function(done) {
-
 			requirejs(["./navlink"], function(navlink) { 
 
-				var nav = navlink()
+				navlink(function() {
+					this.findUrl(cwd, () => {
 
-				nav.findUrl(cwd, function() {
+						expect(this._origin_url).to.have.keys(Object.keys(require("url").parse("")))
+						expect(this.origin_url).to.include("https://my/cool/hosting/unit_test/blob/"+this.branch)
+						var branch = this.branch
+						utils.Spawn("git", ["rev-parse", "--abbrev-ref", "HEAD"], {cwd: cwd}, (code, stdout, stderr) => {
 
-					expect(nav._origin_url).to.have.keys(Object.keys(require("url").parse("")))
-					expect(nav.origin_url).to.include("https://my/cool/hosting/unit_test/blob/"+nav.branch)
-					var branch = nav.branch
-					utils.Spawn("git", ["rev-parse", "--abbrev-ref", "HEAD"], {cwd: cwd}, (code, stdout, stderr) => {
-
-						expect(stderr).to.be.empty
-						expect(stdout.replace(/\s/g, "")).to.equal(branch)
-						done()
+							expect(stderr).to.be.empty
+							expect(stdout.replace(/\s/g, "")).to.equal(branch)
+							done()
+						}, function(error) { expect(false, error).to.be.true; done() })
 					}, function(error) { expect(false, error).to.be.true; done() })
-				}, function(error) { expect(false, error).to.be.true; done() })
+				})
 			})
 		
 		})
