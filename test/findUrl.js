@@ -61,7 +61,16 @@ describe("using stop further progression methodology for dependencies in: "+path
 			}, function(error) { expect(false, error).to.be.true; done() })
 		})
 
-		it("is able to find the test"+path.sep+"example submodule at " + cwd, function(done) {
+		it("is able to find the dummy submodule at " + cwd, function(done) {
+			it_will.stop = true 
+			utils.Spawn("git", ["rev-parse", "--show-toplevel"], {cwd: cwd}, (code, stdout, stderr) => {
+				expect(stdout.replace(/^[\n,\r,\t]*/, "").replace(/[\n,\r,\t]*$/, "")).to.equal(cwd)
+				it_will.stop = false
+				done()
+			}, function(error) { expect(false, error).to.be.true; done() })
+		})
+
+		it("is able to set a new remote origin to the dummy repository " + cwd, function(done) {
 			it_will.stop = true 
 			utils.Spawn("git", ["config", "--local", "remote.origin.url", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
 				it_will.stop = false

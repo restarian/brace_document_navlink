@@ -30,7 +30,8 @@ var expect = require("chai").expect,
 	path = require("path"),
 	fs = require("fs"),
 	utils = require("bracket_utils"),
-	maybe = require("brace_maybe")
+	maybe = require("brace_maybe"),
+	EOL = require("os").EOL
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "navlink.js")
 module.paths.unshift(path.join(__dirname, "..", ".."))
@@ -74,29 +75,64 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 	describe("the modifyData API member replaces the passed in data", function(done) {
 
-		var requirejs, structure, data
+		var requirejs, structure_a, structure_b, data_a, data_b
 		beforeEach(function() {
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 
-			structure = [
+			structure_a = [
 				"/home/project/doc/about.md",
 				{ 
 					"specs": [
 						"/home/project/doc/spec/meta.md",
 						"/home/project/doc/spec/license_file.md",
 						],
-				}
+				},
+				{ 
+					"contact": [
+						"/home/project/doc/author.md",
+					],
+				},
 			]
 
-			data = {
+			structure_b = [
+				"/home/project/doc/about.md",
+				{ 
+					"specs": "bad sata",
+				},
+				{ 
+					"contact": [
+						"/home/project/doc/author.md",
+						{ 
+							"a_person": [
+								"/home/project/doc/a_person/man.md",
+								"/home/project/doc/a_person/woman.md",
+							],
+						}
+					],
+				},
+				{}
+			]
+
+			structure_c = [
+				"/home/project/doc/about.md",
+				"/home/project/doc/spec/meta.md",
+				"/home/project/doc/spec/license_file.md",
+				{}
+			]
+
+			data_a = {
 				"/home/project/doc/spec/license_file.md": {
-					primary_heading: '# Brace Document\n',
-					secondary_heading: '# License Information\n',
 					content: `# Brace Document
 # License Information
 	This is the document page body`
+				},
+			}
+
+			data_b = {
+				"/home/project/doc/spec/license_file.md": {
+					content: ""
 				},
 			}
 		})
@@ -116,7 +152,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 		it("with all arguments are passed in as empty data objects except the structure parameter", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
-				navlink().modifyData(structure, {}, "", function(mutated) {
+				navlink().modifyData(structure_a, {}, "", function(mutated) {
 
 					// The title and object link should be empty but the list should still be created.
 					expect(mutated).to.deep.equal({})
@@ -130,14 +166,17 @@ describe("using stop further progression methodology for dependencies in: "+path
 			requirejs(["./navlink"], function(navlink) { 
 
 				navlink(function() { 
-					this.modifyData(structure, data, "", function(mutated) {
+					this.modifyData(structure_a, data_a, "", function(mutated) {
 
 						expect(mutated).to.deep.equal(
 						{
 							"/home/project/doc/spec/license_file.md": {
-								"content": "# Brace Document\n# License Information\n\n---\n### Document pages\n* [About](/about.md)\n* Specs\n  * [Meta](/specs/meta.md)\n  * **License file**\n\n---\n\tThis is the document page body",
-								"primary_heading": "# Brace Document\n",
-								"secondary_heading": "# License Information\n"
+								"content": EOL+EOL+"---"+EOL+"### Document pages"+EOL+
+								"* [About](/about.md)"+EOL+ 
+								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **License file**"+ EOL + 
+								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL +
+								EOL+"---"+EOL +
+								"# Brace Document"+EOL+"# License Information"+EOL+"\tThis is the document page body",
 							}
 						})
 						done()
@@ -147,28 +186,109 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
+		it("with a structure and a incomplete data object which has an empty content value and an empty link url", function(done) {
+			requirejs(["./navlink"], function(navlink) { 
+
+				navlink(function() { 
+					this.modifyData(structure_a, data_b, "", function(mutated) {
+
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/license_file.md": {
+								"content": EOL+EOL+"---"+EOL+"### Document pages"+EOL+
+								"* [About](/about.md)"+EOL+ 
+								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **License file**"+ EOL + 
+								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL +
+								EOL+"---"+EOL 
+							}
+						})
+						done()
+
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
+			})
+		})
+		
+		it("with a structure and a incomplete data object which has an empty content value and an empty link url with the forceTitle option", function(done) {
+			requirejs(["./navlink"], function(navlink) { 
+
+				navlink(function() { 
+					this.option.forceTitle = true
+					this.option.title = "sweet"
+
+					this.modifyData(structure_a, data_b, "", function(mutated) {
+
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/license_file.md": {
+								"content": EOL+EOL+"---"+EOL+"### sweet"+EOL+
+								"* [About](/about.md)"+EOL+ 
+								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **License file**"+ EOL + 
+								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL +
+								EOL+"---"+EOL 
+							}
+						})
+						done()
+
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
+			})
+		})
 
 		it("with a structure and a incomplete data object that has only one line of page text and an link url and the title set to GooD deal", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
 				var data = {
 					"/home/project/doc/spec/license_file.md": {
-						primary_heading: '',
-						secondary_heading: '',
 						content: `This is the document page body`
 					},
 				}
 
 				var nav = navlink()
 				nav.option.title = "GooD deal"
-				nav.modifyData(structure, data, "https://a/good/url", function(mutated) {
+				nav.modifyData(structure_a, data, "https://a/good/url", function(mutated) {
 
 					expect(mutated).to.deep.equal(
 					{
 						"/home/project/doc/spec/license_file.md": {
-							"content": "\n\n---\n### GooD deal\n* [About](https://a/good/url/about.md)\n* Specs\n  * [Meta](https://a/good/url/specs/meta.md)\n  * **License file**\n\n---\nThis is the document page body",
-							"primary_heading": "",
-							"secondary_heading": ""
+							"content": EOL+EOL+"---"+EOL+"### GooD deal"+EOL+
+								"* [About](https://a/good/url/about.md)"+EOL+ 
+								"* Specs"+EOL+"  * [Meta](https://a/good/url/specs/meta.md)"+EOL+ "  * **License file**"+ EOL + 
+								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+								EOL+"---"+EOL +
+								"This is the document page body"
+						}
+					})
+					done()
+
+				}, function(error) { expect(false, error).to.be.true; done() })
+			})
+		})
+
+		it("with a nested structure and a incomplete data object that has only one line of page text and an link url and the title set to GooD deal", function(done) {
+			requirejs(["./navlink"], function(navlink) { 
+
+				var data = {
+					"/home/project/doc/spec/license_file.md": {
+						content: `This is the document page body`
+					},
+				}
+
+				var nav = navlink()
+				nav.option.title = "GooD deal"
+				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+					expect(mutated).to.deep.equal(
+					{
+						"/home/project/doc/spec/license_file.md": {
+							"content": EOL+EOL+"---"+EOL+"### GooD deal"+EOL+
+								"* [About](https://a/good/url/about.md)"+EOL+ 
+								"* Specs" + EOL + 
+								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
+
+								EOL+"---"+EOL +
+								"This is the document page body"
 						}
 					})
 					done()
