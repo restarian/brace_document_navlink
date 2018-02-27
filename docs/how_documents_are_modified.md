@@ -8,7 +8,9 @@
 * **How documents are modified**
 * [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
 * Specification
+  * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
   * [Package specification](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_specification.md)
+  * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
 ----
 
