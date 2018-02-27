@@ -35,5 +35,10 @@ In the example above, only the fifth line (the markdown link syntax under the he
 		"flag": "-u, --url <string>", 
 		"help": "This is the url of the repository host. The default is to use the git remote origin url of the project root if this is not set."
 	},
+	{
+		"flag": "--indentation <string>", 
+		"help": "This is prepended to every navagation list entry which is a subdirectory. It will be added together for every level down the entry is.",
+		"default": "  "
+	},
 ]
 
