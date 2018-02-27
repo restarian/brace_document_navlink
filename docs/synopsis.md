@@ -7,15 +7,14 @@
 | ![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png) | [![Ubuntu on Windows](https://raw.githubusercontent.com/restarian/restarian/master/doc/image/ubuntu_windows_logo.png)](https://github.com/Microsoft/BashOnWindows) | 
 
 ----
-### Document pages
+### Brace document navlink
 * [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
-* [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
 * [Contributers code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributers_code_of_conduct.md)
-* Specification
-  * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
-  * [Project data and specification](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/project_data_and_specification.md)
-* **Synopsis**
+* [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
 * [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
+* **Synopsis**
+* Specification
+  * [Package specification](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_specification.md)
 
 ----
 

@@ -35,8 +35,8 @@
 	},
 	"dependencies": {
 		"amdefine": "^1.0.1",
-		"bracket_utils": "^0.2.4",
-		"bracket_print": "^0.9.12"
+		"bracket_print": "^0.9.12",
+		"bracket_utils": "^0.3.0"
 	},
 	"technologies": [
 		{
