@@ -22,9 +22,7 @@ SOFTWARE.
 
   Brace document navlink is module to automatically add markdown page navigation links.
 
-  this file is a part of Brace document navlink  
-
- Author: Robert Steckroth, Bust0ut, <RobertSteckroth@gmail.com> */
+  this file is a part of Brace document navlink */
 
 var expect = require("chai").expect,
 	path = require("path"),
