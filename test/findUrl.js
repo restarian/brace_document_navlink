@@ -62,7 +62,8 @@ describe("using stop further progression methodology for dependencies in: "+path
 		it("is able to find the dummy submodule at " + cwd, function(done) {
 			it_will.stop = true 
 			utils.Spawn("git", ["rev-parse", "--show-toplevel"], {cwd: cwd}, (code, stdout, stderr) => {
-				expect(stdout.replace(/^[\n,\r,\t]*/, "").replace(/[\n,\r,\t]*$/, "")).to.equal(cwd)
+				var ab_p = stdout.replace(/^[\n,\r,\t]*/, "").replace(/[\n,\r,\t]*$/, "")
+				expect(ab_p).to.equal(ab_p.replace(/\\/g, "\/"))
 				it_will.stop = false
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })
