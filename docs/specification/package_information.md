@@ -13,9 +13,9 @@
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
 ---
-###  A Brace document plugin which injects a navigation list into markdown documents
+#####  A Brace document plugin which injects a navigation list into markdown documents
 
-**Version**: 0.3.11
+**Version**: 0.3.12
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 
@@ -27,14 +27,14 @@
 
 | Name | Action |
 | ---- | ------ |
- | test | mocha |
- | make_docs | brace_document --navlink -r -i docs_raw -b docs --force-title --title 'Brace document navlink pages' --sort depth |
- | make_docs_extra | npm run make_docs --silent -- --specification --mocha |
+ | test | ```mocha``` |
+ | make_docs | ```brace_document --navlink -r -i docs_raw -b docs --force-title --title 'Brace document navlink pages' --sort depth``` |
+ | make_docs_extra | ```npm run make_docs --silent -- --specification --mocha``` |
 
 **Keywords**: *markdown*, *navigation*, *documentation*, *navbar*, *generation*
 
 **Technologies used in development**:
-  * [VIM](https://vim.org) As an IDE
+  * [VIM](https://www.vim.org) As an IDE
   * [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) For unit testing and as the base operating system
   * [Ubuntu on Windows](https://www.microsoft.com/en-us/store/p/ubuntu/9nblggh4msv6) As the development operating environment
   * [Git](https://git-scm.com) For repository management
