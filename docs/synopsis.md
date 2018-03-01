@@ -7,56 +7,48 @@
 | ![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png) | [![Ubuntu on Windows](https://raw.githubusercontent.com/restarian/restarian/master/doc/image/ubuntu_windows_logo.png)](https://github.com/Microsoft/BashOnWindows) | 
 
 ----
-### Document pages
-* [Contributers code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributers_code_of_conduct.md)
+### Brace document navlink pages
+* [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
+* [Contributer code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributer_code_of_conduct.md)
 * [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
+* [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
+* **Synopsis**
 * Specification
   * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
-* [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
-* **Synopsis**
-* [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
-
-----
-
-**Author: Robert Steckroth, _Bust0ut_ [<RobertSteckroth@gmail.com>](mailto:robertsteckroth@gmail.com)**
-
-**License: MIT**
+  * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
+  * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
 **Bonuses:**
-* Runs in Linux and/or Windows environments.
-* Well commented, thoroughly unit tested and professional engineered code
-* Full asynchronous API design.
+* A fully asynchronous API
+* Uses AMD (*asynchronous module definition*), syntax
+* Well commented, thoroughly unit tested and professional code
+* Tested for Linux and/or Windows environments
 
 **Caveats:**
-* Requires nodejs version 5 or greater
+* Requires nodejs version 6 or greater
 
-This program provides plugin functionality that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
+This program provides plugin functionality which injects navigation list syntax into markdown pages. The pages are collected from a directory within a git repository and navigation link urls are created which reference them.
 
-### The Brace Document Navlink document pages were processed with Brace document navlink too.
-This is the command used to create the document pages you are reading now: ```bash > node path/to/brace_document/bin/document.js -d ./ -vre -t "Brace Document Navlink" -b docs docs_raw```
+##### The document pages you are reading were processed with Brace document navlink too.
+A scripts entry in the *package.json* file runs the appropriate command to process these docs.
 
-### Below is a simple example of a markdown page before and after processing with Brace document navlink. 
----- 
+#### Below is a simple example of a markdown page before and after processing with Brace document navlink. 
 
-#### Before using the document navlink program a markdown page would look like this:
+Before using the Brace document navlink plugin a markdown page would look like this:
 ```javascript
-
-# My module
 ## The main page
 
 Some text about the project here
 ```
 
-#### After processing with Brace document navlink the navigation links would be added like below:
+After processing with the Brace document navlink plugin the navigation links would be added like below:
 ```javascript
 
-# My module
 ## The main page
 
-----
-### Document pages* [Command usage](https://github.com/yourcompany/my_module/blob/master/docs/usage.md)  * [The todo sheet ](https://github.com/yourcompany/my_module/blob/master/docs/development/todo.md)  * [License information](https://github.com/yourcompany/my_module/blob/master/docs/specification/license.md)----
+---
+### Document pages* [Command usage](https://github.com/yourcompany/my_module/blob/master/docs/usage.md)  * [The todo sheet ](https://github.com/yourcompany/my_module/blob/master/docs/development/todo.md)  * [License information](https://github.com/yourcompany/my_module/blob/master/docs/specification/license.md)---
 
 Some text about the project here
 ```
-
 

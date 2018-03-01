@@ -1,13 +1,15 @@
-### License information
+## License information
 
-----
+---
 ### Document pages
 
-----
+---
 
-#### All works, media and writings contained within this project are licensed under the Brace navlink license unless it is explicitly specified otherwise.
+#### All works, media and writings contained within this project are licensed the same as Brace document navlink license unless it is explicitly specified otherwise.
 
-Brace Document Navlink resides under the MIT license
+---
+
+Brace document navlink resides under the MIT license
 
 Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 
@@ -29,7 +31,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace Document Navlink is module to automatically add markdown page navigation links.
+  Brace document navlink is module to automatically add markdown page navigation links.
 
- Author: Robert Edward Steckroth II, BustOut, [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
+  this file is a part of Brace document navlink  
 

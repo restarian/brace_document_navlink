@@ -1,11 +1,11 @@
-### Command line/program options 
+## Command line and module option data
 
-----
+---
 ### Brace document navlink
 
-----
+#### The full list of available options. 
+These options are available via the command line or passed into the platform/plugin constructors when using as module import. 
 
-#### The full list of available options.
 * -u, --url <string>
 	* This is the url of the repository server. The default is to either use the git remote origin url of the current project.
 * -t, --title <string>

@@ -71,7 +71,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 	})
 
-	describe("the modifyData API member replaces the passed in data", function(done) {
+	describe("the modifyData API member correctly alters the passed in data when", function(done) {
 
 		afterEach(cache.dump.bind(cache))
 		var requirejs, structure_a, structure_b, data_a, data_b
@@ -85,7 +85,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 				{ 
 					"specs": [
 						"/home/project/doc/spec/meta.md",
-						"/home/project/doc/spec/license_file.md",
+						"/home/project/doc/spec/testing_file.md",
 						],
 				},
 				{ 
@@ -117,12 +117,12 @@ describe("using stop further progression methodology for dependencies in: "+path
 			structure_c = [
 				"/home/project/doc/about.md",
 				"/home/project/doc/spec/meta.md",
-				"/home/project/doc/spec/license_file.md",
+				"/home/project/doc/spec/testing_file.md",
 				{}
 			]
 
 			data_a = {
-				"/home/project/doc/spec/license_file.md": {
+				"/home/project/doc/spec/testing_file.md": {
 					content: `# Brace Document
 # License Information
 	This is the document page body`
@@ -130,7 +130,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 			}
 
 			data_b = {
-				"/home/project/doc/spec/license_file.md": {
+				"/home/project/doc/spec/testing_file.md": {
 					content: ""
 				},
 			}
@@ -169,12 +169,11 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 						expect(mutated).to.deep.equal(
 						{
-							"/home/project/doc/spec/license_file.md": {
-								"content": EOL+EOL+"---"+EOL+"### Document pages"+EOL+
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL+"---"+EOL+"### Document pages"+EOL+
 								"* [About](/about.md)"+EOL+ 
-								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **License file**"+ EOL + 
+								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **Testing file**"+ EOL + 
 								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL +
-								EOL+"---"+EOL +
 								"# Brace Document"+EOL+"# License Information"+EOL+"\tThis is the document page body",
 							}
 						})
@@ -193,12 +192,11 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 						expect(mutated).to.deep.equal(
 						{
-							"/home/project/doc/spec/license_file.md": {
-								"content": EOL+EOL+"---"+EOL+"### Document pages"+EOL+
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL+"---"+EOL+"### Document pages"+EOL+
 								"* [About](/about.md)"+EOL+ 
-								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **License file**"+ EOL + 
-								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL +
-								EOL+"---"+EOL 
+								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **Testing file**"+ EOL + 
+								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL
 							}
 						})
 						done()
@@ -219,12 +217,11 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 						expect(mutated).to.deep.equal(
 						{
-							"/home/project/doc/spec/license_file.md": {
-								"content": EOL+EOL+"---"+EOL+"### sweet"+EOL+
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL+"---"+EOL+"### sweet"+EOL+
 								"* [About](/about.md)"+EOL+ 
-								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **License file**"+ EOL + 
-								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL +
-								EOL+"---"+EOL 
+								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **Testing file**"+ EOL + 
+								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL 
 							}
 						})
 						done()
@@ -238,7 +235,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 			requirejs(["./navlink"], function(navlink) { 
 
 				var data = {
-					"/home/project/doc/spec/license_file.md": {
+					"/home/project/doc/spec/testing_file.md": {
 						content: `This is the document page body`
 					},
 				}
@@ -249,12 +246,11 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 					expect(mutated).to.deep.equal(
 					{
-						"/home/project/doc/spec/license_file.md": {
-							"content": EOL+EOL+"---"+EOL+"### GooD deal"+EOL+
+						"/home/project/doc/spec/testing_file.md": {
+							"content": EOL+"---"+EOL+"### GooD deal"+EOL+
 								"* [About](https://a/good/url/about.md)"+EOL+ 
-								"* Specs"+EOL+"  * [Meta](https://a/good/url/specs/meta.md)"+EOL+ "  * **License file**"+ EOL + 
+								"* Specs"+EOL+"  * [Meta](https://a/good/url/specs/meta.md)"+EOL+ "  * **Testing file**"+ EOL + 
 								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-								EOL+"---"+EOL +
 								"This is the document page body"
 						}
 					})
@@ -264,11 +260,11 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-		it("with a nested structure and a incomplete data object that has only one line of page text and an link url and the title set to GooD deal", function(done) {
+		it("with a nested structure and incomplete data object that has only one line of page text and an link url and the title option used", function(done) {
 			requirejs(["./navlink"], function(navlink) { 
 
 				var data = {
-					"/home/project/doc/spec/license_file.md": {
+					"/home/project/doc/spec/testing_file.md": {
 						content: `This is the document page body`
 					},
 				}
@@ -279,14 +275,193 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 					expect(mutated).to.deep.equal(
 					{
-						"/home/project/doc/spec/license_file.md": {
-							"content": EOL+EOL+"---"+EOL+"### GooD deal"+EOL+
+						"/home/project/doc/spec/testing_file.md": {
+							"content": EOL+"---"+EOL+"### GooD deal"+EOL+
 								"* [About](https://a/good/url/about.md)"+EOL+ 
 								"* Specs" + EOL + 
 								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
 									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
 
-								EOL+"---"+EOL +
+								"This is the document page body"
+						}
+					})
+					done()
+
+				}, function(error) { expect(false, error).to.be.true; done() })
+			})
+		})
+
+		it("with a nested structure and incomplete data object that has a barebones navlink identifier", function(done) {
+			requirejs(["./navlink"], function(navlink) { 
+
+				var data = {
+					"/home/project/doc/spec/testing_file.md": {
+						content: `
+---
+### Cool
+
+*
+This is the document page body`
+					},
+				}
+
+				var nav = navlink()
+		//		nav.option.title = "GooD deal"
+				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+					expect(mutated).to.deep.equal(
+					{
+						"/home/project/doc/spec/testing_file.md": {
+							"content": EOL+"---"+EOL+"### Cool"+EOL+
+								"* [About](https://a/good/url/about.md)"+EOL+ 
+								"* Specs" + EOL + 
+								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
+
+								EOL+"*"+EOL +
+								"This is the document page body"
+						}
+					})
+					done()
+
+				}, function(error) { expect(false, error).to.be.true; done() })
+			})
+		})
+
+		it("with a nested structure and incomplete data object that has a navlink syntax which is odd (A)", function(done) {
+			requirejs(["./navlink"], function(navlink) { 
+
+				var data = {
+					"/home/project/doc/spec/testing_file.md": {
+						content: `
+*****
+######### Cool
+This is the document page body`
+					},
+				}
+
+				var nav = navlink()
+		//		nav.option.title = "GooD deal"
+				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+					expect(mutated).to.deep.equal(
+					{
+						"/home/project/doc/spec/testing_file.md": {
+							"content": EOL+"*****"+EOL+"######### Cool"+EOL+
+								"* [About](https://a/good/url/about.md)"+EOL+ 
+								"* Specs" + EOL + 
+								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
+								"This is the document page body"
+						}
+					})
+					done()
+
+				}, function(error) { expect(false, error).to.be.true; done() })
+			})
+		})
+
+		it("with a nested structure and incomplete data object that has a navlink syntax which is odd (B)", function(done) {
+			requirejs(["./navlink"], function(navlink) { 
+
+				var data = {
+					"/home/project/doc/spec/testing_file.md": {
+						content: `
+*****
+######### Cool
+
+
+This is the document page body`
+					},
+				}
+
+				var nav = navlink()
+		//		nav.option.title = "GooD deal"
+				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+					expect(mutated).to.deep.equal(
+					{
+						"/home/project/doc/spec/testing_file.md": {
+							"content": EOL+"*****"+EOL+"######### Cool"+EOL+
+								"* [About](https://a/good/url/about.md)"+EOL+ 
+								"* Specs" + EOL + 
+								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + EOL + 
+								"This is the document page body"
+						}
+					})
+					done()
+
+				}, function(error) { expect(false, error).to.be.true; done() })
+			})
+		})
+
+		it("with a nested structure and incomplete data object that has a navlink syntax which is odd (C)", function(done) {
+			requirejs(["./navlink"], function(navlink) { 
+
+				var data = {
+					"/home/project/doc/spec/testing_file.md": {
+						content: `
+*****
+######### Cool
+
+* This is safe
+This is the document page body`
+					},
+				}
+
+				var nav = navlink()
+		//		nav.option.title = "GooD deal"
+				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+					expect(mutated).to.deep.equal(
+					{
+						"/home/project/doc/spec/testing_file.md": {
+							"content": EOL+"*****"+EOL+"######### Cool"+EOL+
+								"* [About](https://a/good/url/about.md)"+EOL+ 
+								"* Specs" + EOL + 
+								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + "* This is safe" + EOL +
+								"This is the document page body"
+						}
+					})
+					done()
+
+				}, function(error) { expect(false, error).to.be.true; done() })
+			})
+		})
+
+		it("with a nested structure and incomplete data object that has a navlink syntax which is odd (D)", function(done) {
+			requirejs(["./navlink"], function(navlink) { 
+
+				var data = {
+					"/home/project/doc/spec/testing_file.md": {
+						content: `
+
+
+
+######### Cool
+
+* This is safe
+This is the document page body`
+					},
+				}
+
+				var nav = navlink()
+				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+					expect(mutated).to.deep.equal(
+					{
+						"/home/project/doc/spec/testing_file.md": {
+							"content": EOL + "---" + EOL + "### Document pages" + EOL +
+								"* [About](https://a/good/url/about.md)" + EOL + 
+								"* Specs" + EOL + 
+								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+								"  * A person" +EOL +
+									"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + 
+									"    * [Woman](https://a/good/url/contact/a_person/woman.md)" + 
+								EOL + EOL + EOL + EOL + EOL + "######### Cool" + EOL + EOL + 
+								"* This is safe" + EOL +
 								"This is the document page body"
 						}
 					})

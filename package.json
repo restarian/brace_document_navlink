@@ -2,13 +2,13 @@
 	"name": "brace_document_navlink",
 	"version": "0.3.11",
 	"priority": "20",
-	"description": "A Brace document plugin to automatically add page navigation list links to markdown documents",
+	"description": "A Brace document plugin which injects a navigation list into markdown documents",
 	"main": "lib/brace_document_navlink.js",
 	"bin": {},
 	"scripts": {
 		"test": "mocha",
-		"make_docs": "brace_document -i docs_raw -b docs -e --link-dest README.md --link-path docs/synopsis.md --force-title --title 'Brace document navlink pages' --sort depth",
-		"make_docs_extra": "npm run make_docs -- --specification --mocha"
+		"make_docs": "brace_document --navlink -r -i docs_raw -b docs --force-title --title 'Brace document navlink pages' --sort depth",
+		"make_docs_extra": "npm run make_docs --silent -- --specification --mocha"
 	},
 	"repository": {
 		"type": "git",
@@ -18,6 +18,7 @@
 		"markdown",
 		"navigation",
 		"documentation",
+		"navbar",
 		"generation"
 	],
 	"author": {

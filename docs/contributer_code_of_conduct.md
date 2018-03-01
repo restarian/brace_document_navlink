@@ -1,18 +1,20 @@
-# Contributor code of conduct
+## The contributors code of conduct
 
 ---
-### Document pages
-* **Contributers code of conduct**
+### Brace document navlink pages
+* [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
+* **Contributer code of conduct**
 * [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
+* [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
+* [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
-* [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
-* [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
-* [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
+  * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
+  * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
 ---
 
-## Our Pledge
+## The Pledge
 
 In the interest of fostering an open and welcoming environment, we as
 contributors and maintainers pledge to making participation in our project and
@@ -21,7 +23,7 @@ size, disability, ethnicity, gender identity and expression, level of experience
 education, socio-economic status, nationality, personal appearance, race,
 religion, or sexual identity and orientation.
 
-## Our Standards
+## The Standards
 
 Examples of behavior that contributes to creating a positive environment
 include:
@@ -43,7 +45,7 @@ Examples of unacceptable behavior by participants include:
 	 * Other conduct which could reasonably be considered inappropriate in a
 	   professional setting
 
-## Our Responsibilities
+## The Responsibilities
 
 Project maintainers are responsible for clarifying the standards of acceptable
 behavior and are expected to take appropriate and fair corrective action in

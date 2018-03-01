@@ -1,21 +1,21 @@
 
 
 ---
-### Document pages
+### Brace document navlink pages
 * [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
-* [Contributers code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributers_code_of_conduct.md)
+* [Contributer code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributer_code_of_conduct.md)
 * [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
 * [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
 * [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
-  * **Package specification**
+  * **Package information**
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
 ---
-###  A project documentation mutation plugin to auto-add page navigation to markdown files
+###  A Brace document plugin which injects a navigation list into markdown documents
 
-**Version**: 0.3.9
+**Version**: 0.3.11
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 
@@ -28,6 +28,10 @@
 | Name | Action |
 | ---- | ------ |
  | test | mocha |
+ | make_docs | brace_document --navlink -r -i docs_raw -b docs --force-title --title 'Brace document navlink pages' --sort depth |
+ | make_docs_extra | npm run make_docs --silent -- --specification --mocha |
+
+**Keywords**: *markdown*, *navigation*, *documentation*, *navbar*, *generation*
 
 **Technologies used in development**:
   * [VIM](https://vim.org) As an IDE

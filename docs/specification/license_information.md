@@ -1,20 +1,24 @@
-### License information
+## License information
 
-----
-### Document pages
-* [Contributers code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributers_code_of_conduct.md)
+---
+### Brace document navlink pages
+* [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
+* [Contributer code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributer_code_of_conduct.md)
 * [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
+* [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
+* [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
 * Specification
   * **License information**
-* [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
-* [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
-* [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
+  * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
+  * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
-----
+---
 
-#### All works, media and writings contained within this project are licensed under the Brace navlink license unless it is explicitly specified otherwise.
+#### All works, media and writings contained within this project are licensed the same as Brace document navlink license unless it is explicitly specified otherwise.
 
-Brace Document Navlink resides under the MIT license
+---
+
+Brace document navlink resides under the MIT license
 
 Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 
@@ -36,7 +40,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace Document Navlink is module to automatically add markdown page navigation links.
+  Brace document navlink is module to automatically add markdown page navigation links.
 
- Author: Robert Edward Steckroth II, BustOut, [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
+  this file is a part of Brace document navlink  
 
