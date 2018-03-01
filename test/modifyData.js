@@ -29,7 +29,9 @@ var expect = require("chai").expect,
 	fs = require("fs"),
 	utils = require("bracket_utils"),
 	maybe = require("brace_maybe"),
-	EOL = require("os").EOL
+	os = require("os")
+
+var EOL = os.platform() === "win32" && "\r\n" || "\n"
 
 var cache = utils.cacheManager(require)
 module.paths.unshift(path.join(__dirname, "..", ".."))
@@ -174,7 +176,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 								"* [About](/about.md)"+EOL+ 
 								"* Specs"+EOL+"  * [Meta](/specs/meta.md)"+EOL+ "  * **Testing file**"+ EOL + 
 								"* Contact" + EOL + "  * [Author](/contact/author.md)" + EOL +
-								"# Brace Document"+EOL+"# License Information"+EOL+"\tThis is the document page body",
+								"# Brace Document"+EOL+"# License Information"+EOL+"\tThis is the document page body"
 							}
 						})
 						done()
@@ -236,7 +238,8 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 				var data = {
 					"/home/project/doc/spec/testing_file.md": {
-						content: `This is the document page body`
+						content: `This is the document page body
+`
 					},
 				}
 
@@ -251,7 +254,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 								"* [About](https://a/good/url/about.md)"+EOL+ 
 								"* Specs"+EOL+"  * [Meta](https://a/good/url/specs/meta.md)"+EOL+ "  * **Testing file**"+ EOL + 
 								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-								"This is the document page body"
+								"This is the document page body" + EOL
 						}
 					})
 					done()
@@ -301,7 +304,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 ### Cool
 
 *
-This is the document page body`
+This is the document page body	`
 					},
 				}
 
@@ -319,7 +322,7 @@ This is the document page body`
 									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
 
 								EOL+"*"+EOL +
-								"This is the document page body"
+								"This is the document page body\t"
 						}
 					})
 					done()
@@ -328,146 +331,184 @@ This is the document page body`
 			})
 		})
 
-		it("with a nested structure and incomplete data object that has a navlink syntax which is odd (A)", function(done) {
-			requirejs(["./navlink"], function(navlink) { 
+		describe("with a nested structure and incomplete data object and using content", function() {
 
-				var data = {
-					"/home/project/doc/spec/testing_file.md": {
-						content: `
+			it("in content variant A", function(done) {
+				requirejs(["./navlink"], function(navlink) { 
+
+					var data = {
+						"/home/project/doc/spec/testing_file.md": {
+							content: `
 *****
 ######### Cool
-This is the document page body`
-					},
-				}
+	This is the document page body`
+						},
+					}
 
-				var nav = navlink()
-		//		nav.option.title = "GooD deal"
-				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+					var nav = navlink()
+			//		nav.option.title = "GooD deal"
+					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
-					expect(mutated).to.deep.equal(
-					{
-						"/home/project/doc/spec/testing_file.md": {
-							"content": EOL+"*****"+EOL+"######### Cool"+EOL+
-								"* [About](https://a/good/url/about.md)"+EOL+ 
-								"* Specs" + EOL + 
-								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
-								"This is the document page body"
-						}
-					})
-					done()
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL+"*****"+EOL+"######### Cool"+EOL+
+									"* [About](https://a/good/url/about.md)"+EOL+ 
+									"* Specs" + EOL + 
+									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+										"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
+									"\tThis is the document page body"
+							}
+						})
+						done()
 
-				}, function(error) { expect(false, error).to.be.true; done() })
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
 			})
-		})
 
-		it("with a nested structure and incomplete data object that has a navlink syntax which is odd (B)", function(done) {
-			requirejs(["./navlink"], function(navlink) { 
+			it("in content variant B", function(done) {
+				requirejs(["./navlink"], function(navlink) { 
 
-				var data = {
-					"/home/project/doc/spec/testing_file.md": {
-						content: `
-*****
+					var data = {
+						"/home/project/doc/spec/testing_file.md": {
+							content: `
+	*****
 ######### Cool
 
 
-This is the document page body`
-					},
-				}
+	This is the document page body`
+						},
+					}
 
-				var nav = navlink()
-		//		nav.option.title = "GooD deal"
-				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+					var nav = navlink()
+			//		nav.option.title = "GooD deal"
+					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
-					expect(mutated).to.deep.equal(
-					{
-						"/home/project/doc/spec/testing_file.md": {
-							"content": EOL+"*****"+EOL+"######### Cool"+EOL+
-								"* [About](https://a/good/url/about.md)"+EOL+ 
-								"* Specs" + EOL + 
-								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + EOL + 
-								"This is the document page body"
-						}
-					})
-					done()
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL+"*****"+EOL+"######### Cool"+EOL+
+									"* [About](https://a/good/url/about.md)"+EOL+ 
+									"* Specs" + EOL + 
+									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+										"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + EOL + 
+									"This is the document page body" + EOL
+							}
+						})
+						done()
 
-				}, function(error) { expect(false, error).to.be.true; done() })
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
 			})
-		})
 
-		it("with a nested structure and incomplete data object that has a navlink syntax which is odd (C)", function(done) {
-			requirejs(["./navlink"], function(navlink) { 
+			it("in content variant C", function(done) {
+				requirejs(["./navlink"], function(navlink) { 
 
-				var data = {
-					"/home/project/doc/spec/testing_file.md": {
-						content: `
-*****
+					var data = {
+						"/home/project/doc/spec/testing_file.md": {
+							content: `
+	*****
+######### Cool
+
+	* This is safe
+	This is the document page body`
+						},
+					}
+
+					var nav = navlink()
+			//		nav.option.title = "GooD deal"
+					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL+"*****"+EOL+"######### Cool"+EOL+
+									"* [About](https://a/good/url/about.md)"+EOL+ 
+									"* Specs" + EOL + 
+									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+										"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + "\t* This is safe" + EOL +
+									"\tThis is the document page body" + EOL
+							}
+						})
+						done()
+
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
+			})
+
+			it("in content variant D", function(done) {
+				requirejs(["./navlink"], function(navlink) { 
+
+					var data = {
+						"/home/project/doc/spec/testing_file.md": {
+							content: `
+
+
+
 ######### Cool
 
 * This is safe
 This is the document page body`
-					},
-				}
+						},
+					}
 
-				var nav = navlink()
-		//		nav.option.title = "GooD deal"
-				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+					var nav = navlink()
+					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
-					expect(mutated).to.deep.equal(
-					{
-						"/home/project/doc/spec/testing_file.md": {
-							"content": EOL+"*****"+EOL+"######### Cool"+EOL+
-								"* [About](https://a/good/url/about.md)"+EOL+ 
-								"* Specs" + EOL + 
-								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + "* This is safe" + EOL +
-								"This is the document page body"
-						}
-					})
-					done()
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL + "---" + EOL + "### Document pages" + EOL +
+									"* [About](https://a/good/url/about.md)" + EOL + 
+									"* Specs" + EOL + 
+									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+									"  * A person" +EOL +
+										"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + 
+										"    * [Woman](https://a/good/url/contact/a_person/woman.md)" + 
+									EOL + EOL + EOL + EOL + EOL + "######### Cool" + EOL + EOL + 
+									"* This is safe" + EOL +
+									"This is the document page body"
+							}
+						})
+						done()
 
-				}, function(error) { expect(false, error).to.be.true; done() })
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
 			})
-		})
 
-		it("with a nested structure and incomplete data object that has a navlink syntax which is odd (D)", function(done) {
-			requirejs(["./navlink"], function(navlink) { 
+			it.skip("in content variant E", function(done) {
+				requirejs(["./navlink"], function(navlink) { 
 
-				var data = {
-					"/home/project/doc/spec/testing_file.md": {
-						content: `
-
-
-
+					var data = {
+						"/home/project/doc/spec/testing_file.md": {
+							content: `
+	*****
 ######### Cool
 
-* This is safe
-This is the document page body`
-					},
-				}
+	* This is safe
+	This is the document page body`
+						},
+					}
 
-				var nav = navlink()
-				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+					var nav = navlink()
+			//		nav.option.title = "GooD deal"
+					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
-					expect(mutated).to.deep.equal(
-					{
-						"/home/project/doc/spec/testing_file.md": {
-							"content": EOL + "---" + EOL + "### Document pages" + EOL +
-								"* [About](https://a/good/url/about.md)" + EOL + 
-								"* Specs" + EOL + 
-								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-								"  * A person" +EOL +
-									"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + 
-									"    * [Woman](https://a/good/url/contact/a_person/woman.md)" + 
-								EOL + EOL + EOL + EOL + EOL + "######### Cool" + EOL + EOL + 
-								"* This is safe" + EOL +
-								"This is the document page body"
-						}
-					})
-					done()
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL+"\t*****"+EOL+"######### Cool"+EOL+
+									"* [About](https://a/good/url/about.md)"+EOL+ 
+									"* Specs" + EOL + 
+									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+										"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + "\t* This is safe" + EOL +
+									"\tThis is the document page body" + EOL
+							}
+						})
+						done()
 
-				}, function(error) { expect(false, error).to.be.true; done() })
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
 			})
 		})
 	})

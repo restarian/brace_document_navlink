@@ -13,7 +13,7 @@ silent! normal! zE
 47,69fold
 47
 normal! zo
-let s:l = 66 - ((26 * winheight(0) + 20) / 41)
+let s:l = 66 - ((25 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
