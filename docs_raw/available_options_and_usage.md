@@ -1,7 +1,7 @@
 ## Command line and module option data
 
 ---
-### Brace document navlink
+### Document pages
 
 #### The full list of available options. 
 These options are available via the command line or passed into the platform/plugin constructors when using as module import. 

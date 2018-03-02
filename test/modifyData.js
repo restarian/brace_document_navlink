@@ -387,12 +387,12 @@ This is the document page body	`
 						expect(mutated).to.deep.equal(
 						{
 							"/home/project/doc/spec/testing_file.md": {
-								"content": EOL+"*****"+EOL+"######### Cool"+EOL+
+								"content": EOL+"\t*****"+EOL+"######### Cool"+EOL+
 									"* [About](https://a/good/url/about.md)"+EOL+ 
 									"* Specs" + EOL + 
 									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
 										"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + EOL + 
-									"This is the document page body" + EOL
+									"\tThis is the document page body"
 							}
 						})
 						done()
@@ -409,9 +409,10 @@ This is the document page body	`
 							content: `
 	*****
 ######### Cool
-
+	
 	* This is safe
-	This is the document page body`
+	This is the document page body
+`
 						},
 					}
 
@@ -422,11 +423,11 @@ This is the document page body	`
 						expect(mutated).to.deep.equal(
 						{
 							"/home/project/doc/spec/testing_file.md": {
-								"content": EOL+"*****"+EOL+"######### Cool"+EOL+
+								"content": EOL+"\t*****"+EOL+"######### Cool"+EOL+
 									"* [About](https://a/good/url/about.md)"+EOL+ 
 									"* Specs" + EOL + 
 									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-										"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + "\t* This is safe" + EOL +
+										"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + "\t" + EOL + "\t* This is safe" + EOL +
 									"\tThis is the document page body" + EOL
 							}
 						})
@@ -476,13 +477,13 @@ This is the document page body`
 				})
 			})
 
-			it.skip("in content variant E", function(done) {
+			it("in content variant E", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
 						"/home/project/doc/spec/testing_file.md": {
 							content: `
-	*****
+	_ _ _
 ######### Cool
 
 	* This is safe
@@ -497,12 +498,47 @@ This is the document page body`
 						expect(mutated).to.deep.equal(
 						{
 							"/home/project/doc/spec/testing_file.md": {
-								"content": EOL+"\t*****"+EOL+"######### Cool"+EOL+
-									"* [About](https://a/good/url/about.md)"+EOL+ 
+								"content": EOL+"\t_ _ _"+EOL+"######### Cool" + EOL +
+									"* [About](https://a/good/url/about.md)" + EOL + 
 									"* Specs" + EOL + 
 									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-										"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + "\t* This is safe" + EOL +
-									"\tThis is the document page body" + EOL
+										"  * A person" +EOL+ "    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + "\t* This is safe" + EOL +
+									"\tThis is the document page body"
+							}
+						})
+						done()
+
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
+			})
+
+			it("in content variant F", function(done) {
+				requirejs(["./navlink"], function(navlink) { 
+
+					var data = {
+						"/home/project/doc/spec/testing_file.md": {
+							content: `
+		___	
+######### Cool
+	* This is replaced 
+	This is the document page body`
+						},
+					}
+
+					var nav = navlink()
+					nav.option.title = "HERE TOO"
+					nav.option.forceTitle = true 
+					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/testing_file.md": {
+								"content": EOL+"\t\t___\t"+EOL+"######### HERE TOO" + EOL +
+									"* [About](https://a/good/url/about.md)" + EOL + 
+									"* Specs" + EOL + 
+									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
+										"  * A person" +EOL+ "    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + 
+										"\tThis is the document page body"
 							}
 						})
 						done()
