@@ -332,7 +332,7 @@ This is the document page body	`.replace(/\n/g, EOL)
 
 		describe("with a nested structure and incomplete data object and using content", function() {
 
-			it("in content variant A", function(done) {
+			it("with content variant A", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
@@ -345,7 +345,6 @@ This is the document page body	`.replace(/\n/g, EOL)
 					}
 
 					var nav = navlink()
-			//		nav.option.title = "GooD deal"
 					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
 						expect(mutated).to.deep.equal(
@@ -365,7 +364,7 @@ This is the document page body	`.replace(/\n/g, EOL)
 				})
 			})
 
-			it("in content variant B", function(done) {
+			it("with content variant B", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
@@ -380,7 +379,6 @@ This is the document page body	`.replace(/\n/g, EOL)
 					}
 
 					var nav = navlink()
-			//		nav.option.title = "GooD deal"
 					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
 						expect(mutated).to.deep.equal(
@@ -400,7 +398,7 @@ This is the document page body	`.replace(/\n/g, EOL)
 				})
 			})
 
-			it("in content variant C", function(done) {
+			it("with content variant C", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
@@ -416,7 +414,6 @@ This is the document page body	`.replace(/\n/g, EOL)
 					}
 
 					var nav = navlink()
-			//		nav.option.title = "GooD deal"
 					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
 						expect(mutated).to.deep.equal(
@@ -436,7 +433,7 @@ This is the document page body	`.replace(/\n/g, EOL)
 				})
 			})
 
-			it("in content variant D", function(done) {
+			it("with content variant D", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
@@ -476,7 +473,7 @@ This is the document page body`.replace(/\n/g, EOL)
 				})
 			})
 
-			it("in content variant E", function(done) {
+			it("with content variant E", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
@@ -491,7 +488,7 @@ This is the document page body`.replace(/\n/g, EOL)
 					}
 
 					var nav = navlink()
-			//		nav.option.title = "GooD deal"
+					nav.option.title = "Nope"
 					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
 						expect(mutated).to.deep.equal(
@@ -511,7 +508,7 @@ This is the document page body`.replace(/\n/g, EOL)
 				})
 			})
 
-			it("in content variant F", function(done) {
+			it("with content variant F", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
@@ -546,7 +543,7 @@ This is the document page body`.replace(/\n/g, EOL)
 				})
 			})
 
-			it("in content variant F and forcing win32 platform type for line breaks", function(done) {
+			it("with content variant F and forcing win32 platform type for line breaks", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
@@ -582,7 +579,7 @@ This is the document page body`.replace(/\n/g, EOL)
 				})
 			})
 
-			it("in content variant F and forcing posix platform type for line breaks", function(done) {
+			it("with content variant F and forcing posix platform type for line breaks", function(done) {
 				requirejs(["./navlink"], function(navlink) { 
 
 					var data = {
