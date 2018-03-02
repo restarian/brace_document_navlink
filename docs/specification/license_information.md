@@ -12,8 +12,6 @@
   * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
----
-
 #### All works, media and writings contained within this project are licensed the same as Brace document navlink license unless it is explicitly specified otherwise.
 
 ---

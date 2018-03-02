@@ -46,14 +46,17 @@
       * ✓ with a structure and a incomplete data object that has only one line of page text and an link url and the title set to GooD deal
       * ✓ with a nested structure and incomplete data object that has only one line of page text and an link url and the title option used
       * ✓ with a nested structure and incomplete data object that has a barebones navlink identifier
-      * ✓ with a nested structure and incomplete data object that has a navlink syntax which is odd (A)
-      * ✓ with a nested structure and incomplete data object that has a navlink syntax which is odd (B)
-      * ✓ with a nested structure and incomplete data object that has a navlink syntax which is odd (C)
-      * ✓ with a nested structure and incomplete data object that has a navlink syntax which is odd (D)
+      * with a nested structure and incomplete data object and using content
+        * ✓ in content variant A
+        * ✓ in content variant B
+        * ✓ in content variant C
+        * ✓ in content variant D
+        * ✓ in content variant E
+        * ✓ in content variant F
 
   * using stop further progression methodology for dependencies in: otherAPI.js
     * the other API members such as
       * ✓ the sentenceConvert member works as expected
 
-  * 25 passing
+  * 27 passing
 

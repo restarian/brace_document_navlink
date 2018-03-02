@@ -127,7 +127,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 				"/home/project/doc/spec/testing_file.md": {
 					content: `# Brace Document
 # License Information
-	This is the document page body`
+	This is the document page body`.replace(/\n/g, EOL)
 				},
 			}
 
@@ -239,7 +239,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 				var data = {
 					"/home/project/doc/spec/testing_file.md": {
 						content: `This is the document page body
-`
+`.replace(/\n/g, EOL)
 					},
 				}
 
@@ -268,7 +268,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 				var data = {
 					"/home/project/doc/spec/testing_file.md": {
-						content: `This is the document page body`
+						content: `This is the document page body`.replace(/\n/g, EOL)
 					},
 				}
 
@@ -304,12 +304,11 @@ describe("using stop further progression methodology for dependencies in: "+path
 ### Cool
 
 *
-This is the document page body	`
+This is the document page body	`.replace(/\n/g, EOL)
 					},
 				}
 
 				var nav = navlink()
-		//		nav.option.title = "GooD deal"
 				nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
 
 					expect(mutated).to.deep.equal(
@@ -341,7 +340,7 @@ This is the document page body	`
 							content: `
 *****
 ######### Cool
-	This is the document page body`
+	This is the document page body`.replace(/\n/g, EOL)
 						},
 					}
 
@@ -376,7 +375,7 @@ This is the document page body	`
 ######### Cool
 
 
-	This is the document page body`
+	This is the document page body`.replace(/\n/g, EOL)
 						},
 					}
 
@@ -412,7 +411,7 @@ This is the document page body	`
 	
 	* This is safe
 	This is the document page body
-`
+`.replace(/\n/g, EOL)
 						},
 					}
 
@@ -449,7 +448,7 @@ This is the document page body	`
 ######### Cool
 
 * This is safe
-This is the document page body`
+This is the document page body`.replace(/\n/g, EOL)
 						},
 					}
 
@@ -487,7 +486,7 @@ This is the document page body`
 ######### Cool
 
 	* This is safe
-	This is the document page body`
+	This is the document page body`.replace(/\n/g, EOL)
 						},
 					}
 
@@ -521,7 +520,7 @@ This is the document page body`
 		___	
 ######### Cool
 	* This is replaced 
-	This is the document page body`
+	This is the document page body`.replace(/\n/g, EOL)
 						},
 					}
 

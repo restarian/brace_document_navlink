@@ -12,7 +12,7 @@
   * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
----
+*revision 3*
 
 ### Unit Testing:
 
