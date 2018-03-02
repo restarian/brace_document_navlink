@@ -19,35 +19,36 @@
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
 **Bonuses:**
-* A fully asynchronous API
+* A fully asynchronous and idempotent API
 * Uses AMD (*asynchronous module definition*), syntax
-* Well commented, thoroughly unit tested and professional code
+* Well commented, thoroughly unit tested and professional engineered scripting 
 * Tested for Linux and/or Windows environments
 
 **Caveats:**
 * Requires nodejs version 6 or greater
 
-This program provides plugin functionality which injects navigation list syntax into markdown pages. The pages are collected from a directory within a git repository and navigation link urls are created which reference them.
+This program provides plugin functionality which injects navigation list syntax into markdown pages using a two line denotation formula. Documents are then collected from a directory within project and a set of navigation link urls are injected which reference the relative location of the documents.
 
 ##### The document pages you are reading were processed with Brace document navlink too.
 A scripts entry in the *package.json* file runs the appropriate command to process these docs.
 
-#### Below is a simple example of a markdown page before and after processing with Brace document navlink. 
+#### Below is an example of a markdown page before and after processing with the Brace document navlink. 
 
 Before using the Brace document navlink plugin a markdown page would look like this:
-```javascript
+```markdown
 ## The main page
 
 Some text about the project here
 ```
 
 After processing with the Brace document navlink plugin the navigation links would be added like below:
-```javascript
+```markdown
 
 ## The main page
 
 ---
-### Document pages* [Command usage](https://github.com/yourcompany/my_module/blob/master/docs/usage.md)  * [The todo sheet ](https://github.com/yourcompany/my_module/blob/master/docs/development/todo.md)  * [License information](https://github.com/yourcompany/my_module/blob/master/docs/specification/license.md)---
+### Document pages
+---
 
 Some text about the project here
 ```

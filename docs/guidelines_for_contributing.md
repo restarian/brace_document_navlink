@@ -60,7 +60,7 @@ Comments make the source code cozy and human friendly.
 * Keep in mind that comments may also be copy and pasted into a documentation file.
 * The commenting of API methods is the bare minimum. At least one comment line should go directly beneath all API methods/members.
 * All non-API member commenting should be placed directly above the code it references.
-* It is annoying to work with comments which are placed on the same line as source code. E.g. ```javascript var maker // This property is global```
+* It is annoying to work with comments which are placed on the same line as source code. *E.g. var maker // This property is global*
 
 
 ### Some tips you might want to consider anyways:

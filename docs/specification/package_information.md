@@ -1,5 +1,4 @@
 
-
 ---
 ### Brace document navlink pages
 * [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
@@ -11,11 +10,9 @@
   * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
   * **Package information**
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
+**Version**: 0.4.1
 
----
-#####  A Brace document plugin which injects a navigation list into markdown documents
-
-**Version**: 0.3.16
+**Description**: A Brace document plugin which injects a navigation list into markdown documents
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 

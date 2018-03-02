@@ -1,5 +1,4 @@
 
-
 ---
 ### Brace document navlink pages
 * [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
@@ -11,8 +10,6 @@
   * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
   * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
   * **Unit test output**
-
----
 ## Output of the unit testing
 
   * using stop further progression methodology for dependencies in: acquireNavlink.js
@@ -47,14 +44,14 @@
       * ✓ with a nested structure and incomplete data object that has only one line of page text and an link url and the title option used
       * ✓ with a nested structure and incomplete data object that has a barebones navlink identifier
       * with a nested structure and incomplete data object and using content
-        * ✓ in content variant A
-        * ✓ in content variant B
-        * ✓ in content variant C
-        * ✓ in content variant D
-        * ✓ in content variant E
-        * ✓ in content variant F
-        * ✓ in content variant F and forcing win32 platform type for line breaks
-        * ✓ in content variant F and forcing posix platform type for line breaks
+        * ✓ with content variant A
+        * ✓ with content variant B
+        * ✓ with content variant C
+        * ✓ with content variant D
+        * ✓ with content variant E
+        * ✓ with content variant F
+        * ✓ with content variant F and forcing win32 platform type for line breaks
+        * ✓ with content variant F and forcing posix platform type for line breaks
 
   * using stop further progression methodology for dependencies in: otherAPI.js
     * the other API members such as
