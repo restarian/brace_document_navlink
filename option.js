@@ -40,9 +40,9 @@ In the example above, only the fifth line (the markdown link syntax under the he
 	},
 	{
 		"flag": "--line-breaking <auto, win32, posix>", 
-		"help": "Line break identifiers differ depending on which operating system creates the document. This option will force the line break type into" +
-					" the documents which are outputed. This plugin can handle any of the three types listed above. Of 'auto' is set then the outputed line" +
-					" break type will match the current operating system.",
+		"help": "Line break identifiers differ depending on which operating system creates a document. This option can force a line break type into" +
+					" the outputed documents. This plugin parsing mechanism can handle either of the two types available (or a combination of them in" +
+					" a single document). When set to 'auto', the  outputed line break type will match the current operating system which runs the program.",
 		"default": "auto"
 	},
 ]
