@@ -53,10 +53,12 @@
         * ✓ in content variant D
         * ✓ in content variant E
         * ✓ in content variant F
+        * ✓ in content variant F and forcing win32 platform type for line breaks
+        * ✓ in content variant F and forcing posix platform type for line breaks
 
   * using stop further progression methodology for dependencies in: otherAPI.js
     * the other API members such as
       * ✓ the sentenceConvert member works as expected
 
-  * 27 passing
+  * 29 passing
 

@@ -15,7 +15,7 @@
 ---
 #####  A Brace document plugin which injects a navigation list into markdown documents
 
-**Version**: 0.3.15
+**Version**: 0.3.16
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 

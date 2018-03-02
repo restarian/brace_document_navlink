@@ -545,6 +545,78 @@ This is the document page body`.replace(/\n/g, EOL)
 					}, function(error) { expect(false, error).to.be.true; done() })
 				})
 			})
+
+			it("in content variant F and forcing win32 platform type for line breaks", function(done) {
+				requirejs(["./navlink"], function(navlink) { 
+
+					var data = {
+						"/home/project/doc/spec/testing_file.md": {
+							content: `
+		___	
+######### Cool
+	* This is replaced 
+	This is the document page body`.replace(/\n/g, EOL)
+						},
+					}
+
+					var nav = navlink()
+					nav.option.title = "HERE TOO"
+					nav.option.forceTitle = true 
+					nav.option.lineBreaking = "win32" 
+					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/testing_file.md": {
+								"content": "\r\n\t\t___\t\r\n######### HERE TOO\r\n" +
+									"* [About](https://a/good/url/about.md)\r\n" +
+									"* Specs\r\n" +
+									"* Contact\r\n  * [Author](https://a/good/url/contact/author.md)\r\n" +
+										"  * A person\r\n    * [Man](https://a/good/url/contact/a_person/man.md)\r\n    * [Woman](https://a/good/url/contact/a_person/woman.md)\r\n" +
+										"\tThis is the document page body"
+							}
+						})
+						done()
+
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
+			})
+
+			it("in content variant F and forcing posix platform type for line breaks", function(done) {
+				requirejs(["./navlink"], function(navlink) { 
+
+					var data = {
+						"/home/project/doc/spec/testing_file.md": {
+							content: `
+		___	
+######### Cool
+	* This is replaced 
+	This is the document page body`.replace(/\n/g, EOL)
+						},
+					}
+
+					var nav = navlink()
+					nav.option.title = "HERE TOO"
+					nav.option.forceTitle = true 
+					nav.option.lineBreaking = "posix" 
+					nav.modifyData(structure_b, data, "https://a/good/url", function(mutated) {
+
+						expect(mutated).to.deep.equal(
+						{
+							"/home/project/doc/spec/testing_file.md": {
+								"content": "\n\t\t___\t\n######### HERE TOO\n" +
+									"* [About](https://a/good/url/about.md)\n" +
+									"* Specs\n" +
+									"* Contact\n  * [Author](https://a/good/url/contact/author.md)\n" +
+										"  * A person\n    * [Man](https://a/good/url/contact/a_person/man.md)\n    * [Woman](https://a/good/url/contact/a_person/woman.md)\n" +
+										"\tThis is the document page body"
+							}
+						})
+						done()
+
+					}, function(error) { expect(false, error).to.be.true; done() })
+				})
+			})
 		})
 	})
 })

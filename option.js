@@ -38,5 +38,12 @@ In the example above, only the fifth line (the markdown link syntax under the he
 		"help": "This is prepended to every navagation list entry which is a subdirectory. It will be added together for every level down the entry is.",
 		"default": "  "
 	},
+	{
+		"flag": "--line-breaking <auto, win32, posix>", 
+		"help": "Line break identifiers differ depending on which operating system creates the document. This option will force the line break type into" +
+					" the documents which are outputed. This plugin can handle any of the three types listed above. Of 'auto' is set then the outputed line" +
+					" break type will match the current operating system.",
+		"default": "auto"
+	},
 ]
 
