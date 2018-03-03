@@ -270,12 +270,13 @@ describe("using stop further progression methodology for dependencies in: "+path
 					expect(mutated).to.deep.equal(
 					{
 						"/home/project/doc/spec/testing_file.md": {
-							"content": EOL+"---"+EOL+"### GooD deal"+EOL+
-								"* [About](https://a/good/url/about.md)"+EOL+ 
+							"content": EOL + "---" + EOL + 
+							"### GooD deal" + EOL +
+								"* [About](https://a/good/url/about.md)" + EOL + 
 								"* Specs" + EOL + 
 								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
-
+									"  * A person" + EOL + "    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + 
+									"    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
 								"This is the document page body"
 						}
 					})
@@ -309,9 +310,10 @@ This is the document page body	`.replace(/\n/g, EOL)
 								"* [About](https://a/good/url/about.md)"+EOL+ 
 								"* Specs" + EOL + 
 								"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-									"  * A person" +EOL+"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL +
-
-								EOL+"*"+EOL +
+									"  * A person" +EOL +
+									"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + 
+									"    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + 
+								"*" + EOL + 
 								"This is the document page body\t"
 						}
 					})
@@ -488,8 +490,12 @@ This is the document page body`.replace(/\n/g, EOL)
 								"content": EOL+"\t_ _ _"+EOL+"######### Cool" + EOL +
 									"* [About](https://a/good/url/about.md)" + EOL + 
 									"* Specs" + EOL + 
-									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-										"  * A person" +EOL+ "    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + "\t* This is safe" + EOL +
+									"* Contact" + EOL + 
+										"  * [Author](https://a/good/url/contact/author.md)" + EOL +
+									"  * A person" + EOL + 
+										"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + 
+										"    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + EOL + 
+									"\t* This is safe" + EOL +
 									"\tThis is the document page body"
 							}
 						})
@@ -523,9 +529,12 @@ This is the document page body`.replace(/\n/g, EOL)
 								"content": EOL+"\t\t___\t"+EOL+"######### HERE TOO" + EOL +
 									"* [About](https://a/good/url/about.md)" + EOL + 
 									"* Specs" + EOL + 
-									"* Contact" + EOL + "  * [Author](https://a/good/url/contact/author.md)" + EOL +
-										"  * A person" +EOL+ "    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + "    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + 
-										"\tThis is the document page body"
+									"* Contact" + EOL + 
+									"  * [Author](https://a/good/url/contact/author.md)" + EOL +
+									"  * A person" + EOL + 
+									"    * [Man](https://a/good/url/contact/a_person/man.md)" + EOL + 
+									"    * [Woman](https://a/good/url/contact/a_person/woman.md)" + EOL + 
+									"\tThis is the document page body"
 							}
 						})
 						done()
@@ -543,6 +552,9 @@ This is the document page body`.replace(/\n/g, EOL)
 		___	
 ######### Cool
 	* This is replaced 
+
+
+
 	This is the document page body`.replace(/\n/g, EOL)
 						},
 					}
@@ -559,9 +571,12 @@ This is the document page body`.replace(/\n/g, EOL)
 								"content": "\r\n\t\t___\t\r\n######### HERE TOO\r\n" +
 									"* [About](https://a/good/url/about.md)\r\n" +
 									"* Specs\r\n" +
-									"* Contact\r\n  * [Author](https://a/good/url/contact/author.md)\r\n" +
-										"  * A person\r\n    * [Man](https://a/good/url/contact/a_person/man.md)\r\n    * [Woman](https://a/good/url/contact/a_person/woman.md)\r\n" +
-										"\tThis is the document page body"
+									"* Contact\r\n" + 
+									"  * [Author](https://a/good/url/contact/author.md)\r\n" +
+									"  * A person\r\n" + 
+									"    * [Man](https://a/good/url/contact/a_person/man.md)\r\n" + 
+									"    * [Woman](https://a/good/url/contact/a_person/woman.md)\r\n\r\n\r\n\r\n" +
+									"\tThis is the document page body"
 							}
 						})
 						done()
@@ -576,10 +591,11 @@ This is the document page body`.replace(/\n/g, EOL)
 					var data = {
 						"/home/project/doc/spec/testing_file.md": {
 							content: `
-		___	
-######### Cool
+		__	_	
+# # Cool
 	* This is replaced 
-	This is the document page body`.replace(/\n/g, EOL)
+
+		This is the document page body`.replace(/\n/g, EOL)
 						},
 					}
 
@@ -592,12 +608,15 @@ This is the document page body`.replace(/\n/g, EOL)
 						expect(mutated).to.deep.equal(
 						{
 							"/home/project/doc/spec/testing_file.md": {
-								"content": "\n\t\t___\t\n######### HERE TOO\n" +
+								"content": "\n\t\t__\t_\t\n# HERE TOO\n" +
 									"* [About](https://a/good/url/about.md)\n" +
 									"* Specs\n" +
-									"* Contact\n  * [Author](https://a/good/url/contact/author.md)\n" +
-										"  * A person\n    * [Man](https://a/good/url/contact/a_person/man.md)\n    * [Woman](https://a/good/url/contact/a_person/woman.md)\n" +
-										"\tThis is the document page body"
+									"* Contact\n" + 
+									"  * [Author](https://a/good/url/contact/author.md)\n" +
+									"  * A person\n" + 
+									"    * [Man](https://a/good/url/contact/a_person/man.md)\n" + 
+									"    * [Woman](https://a/good/url/contact/a_person/woman.md)\n\n" +
+									"\t\tThis is the document page body"
 							}
 						})
 						done()
