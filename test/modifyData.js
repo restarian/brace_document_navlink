@@ -47,7 +47,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e; }})()).to.be.true 
 			it_will.stop = false 
 			done()
 		})
@@ -57,15 +57,6 @@ describe("using stop further progression methodology for dependencies in: "+path
 			it_will.stop = true 
 			utils.Spawn("git", [], function() {
 				it_will.stop = false 
-				done()
-			}, function(error) { expect(false, error).to.be.true; done() })
-		})
-
-		it("is able to find the test"+path.sep+"example submodule at " + cwd, function(done) {
-
-			it_will.stop = true 
-			utils.Spawn("git", ["config", "--local", "remote.origin.url", "https://my/cool/hosting/unit_test.git"], {cwd: cwd}, (code, stdout, stderr) => {
-				it_will.stop = false
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })
 		})

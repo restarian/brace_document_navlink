@@ -20,9 +20,11 @@ The current platform is automatically detected and the corresponding line breaks
 The navigation link test will be injected at the very top of the page if a match is not found. The program looks for a markdown horizontal rule followed by a markdown heading.  
 
 The regular expression uses by this plugin to locate a navigation list: 
+
 ```((?:\r\n|\n)+[\ ,\t,\-,\*,\_]{3,}(?:\r\n|\n)+)(#+[\ ,\t]+)([^(?:\n||\r\n)]+)(?:\r\n|\n)```
 
-The regular expression uses by this plugin to locate a navigation list bullets (*this is appended to the navigation list regex above: 
+The regular expression uses by this plugin to locate a navigation list bullets (*this is appended to the navigation list regex above*): 
+
 ```([\ ,\t]*[\*,\+,\-][\ ,\t]+.*(?:\r\n|\n)+)```
 
 #### Below are some examples of what is matched as a navigation list when parsing the markdown files. 

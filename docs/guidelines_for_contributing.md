@@ -14,7 +14,7 @@
 
 *revision 3*
 
-### Unit Testing:
+### Unit testing:
 
 It is nice to know that the unit tests are also working remotely. This project uses [Appveyor](https://www.appveyor.com) and [TravisCI](https://travis-ci.org) which are free for open source projects. Any tests which fail the remote testing process will be considered invalid.
 
@@ -64,7 +64,7 @@ Comments make the source code cozy and human friendly.
 
 
 ### Some tips you might want to consider anyways:
-These is just for informaitve purposes and is not expected for this project.
+These is just for informative purposes and is not expected for this project.
 
 * Qualifier pluralization is confusing. All things are more than one in programming.
 * Capitalization makes some properties feel more important than others. This is exactly how "the man" wants you to think, tisk, tisk..

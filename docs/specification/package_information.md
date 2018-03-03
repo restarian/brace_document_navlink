@@ -10,6 +10,8 @@
   * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
   * **Package information**
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
+ 
+ 
 **Version**: 0.4.1
 
 **Description**: A Brace document plugin which injects a navigation list into markdown documents
@@ -26,9 +28,9 @@
 | ---- | ------ |
  | test | ```mocha``` |
  | make_docs | ```brace_document --navlink -r -i docs_raw -b docs --force-title --title 'Brace document navlink pages' --sort depth``` |
- | make_docs_extra | ```npm run make_docs --silent -- --specification --mocha``` |
+ | make_docs_extra | ```npm run make_docs --silent -- --batten-document-specification --batten-document-mocha``` |
 
-**Keywords**: *markdown*, *navigation*, *documentation*, *navbar*, *generation*
+**Keywords**: *markdown*, *navigation*, *documentation*, *navbar*, *navlist*, *generation*
 
 **Technologies used in development**:
   * [VIM](https://www.vim.org) As an IDE
