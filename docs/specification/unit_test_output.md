@@ -54,8 +54,10 @@
         * ✓ with content variant F and forcing posix platform type for line breaks
 
   * using stop further progression methodology for dependencies in: otherAPI.js
+    * checking for dependencies..
+      * ✓ r_js in the system as a program
     * the other API members such as
       * ✓ the sentenceConvert member works as expected
 
-  * 29 passing
+  * 30 passing
 
