@@ -3,9 +3,10 @@
 ---
 ### Document pages
 
-#### The full list of available options which this plugin adds to the platform.. 
-These options are available via the command line or passed into the platform/plugin constructors when using as module import. 
+---
 
+### The full list of available options which this plugin adds to the platform.. 
+#### These options are available via the command line or passed into the platform/plugin constructors when using as module import. 
 * -u, --url <*string*> default: the git remote origin url of the current project
 	* This is the url of the repository server to use when creating the navlink. 
 * -t, --title <*string*> default: Document pages"

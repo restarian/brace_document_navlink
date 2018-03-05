@@ -12,7 +12,7 @@
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
  
  
-**Version**: 1.0.0
+**Version**: 1.0.2
 
 **Description**: A Brace document plugin which injects a navigation list into markdown documents
 

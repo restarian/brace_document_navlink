@@ -12,10 +12,11 @@
   * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
+---
+
 *revision 3*
 
 ### Unit testing:
-
 It is nice to know that the unit tests are also working remotely. This project uses [Appveyor](https://www.appveyor.com) and [TravisCI](https://travis-ci.org) which are free for open source projects. Any tests which fail the remote testing process will be considered invalid.
 
 Unit tests are the nuts and bolts of javascript engineering. The entire API of this program has corresponding unit tests and it needs to stay that way. It is not terribly important if you have your own style of unit tests however. It is convenient to copy/paste another testing file and replace the tests with the new ones specific to the target. Also, comments are completely optional in the unit tests and serve for reminders only. 
