@@ -2,7 +2,7 @@
 	"name": "brace_document_navlink",
 	"version": "1.0.2",
 	"priority": "20",
-	"description": "A Brace document plugin which injects a navigation list into markdown documents",
+	"description": "A Brace Document plugin which injects a navigation list into markdown documents",
 	"main": "lib/brace_document_navlink.js",
 	"bin": {},
 	"scripts": {
@@ -31,31 +31,37 @@
 		"url": "https://github.com/restarian/brace_document_navlink/issues"
 	},
 	"homepage": "https://github.com/restarian/brace_document_navlink#readme",
-	"devDependencies": {
-		"brace_maybe": "^0.1.3",
-		"mocha": "^5.0.0",
-		"chai": "^4.1.2",
-		"requirejs": "^2.3.5"
-	},
 	"dependencies": {
 		"amdefine": "^1.0.1",
 		"bracket_print": "^0.9.12",
 		"bracket_utils": "^0.3.0"
 	},
+	"devDependencies": {
+		"brace_document": "^1.1.0",
+		"brace_maybe": "^0.1.3",
+		"mocha": "^5.0.0",
+		"chai": "^4.1.2",
+		"requirejs": "^2.3.5"
+	},
+	"optionalDependencies": {
+		"batten_document_specification": "https://github.com/restarian/batten_document_specification.git",
+		"batten_document_mocha": "https://github.com/restarian/batten_document_mocha.git",
+		"brace_document_link": "^1.1.0"
+	},
 	"technologies": [
 		{
 			"name": "VIM",
-			"description": "As an IDE",
+			"description": "As the primary IDE",
 			"url": "https://www.vim.org"
 		},
 		{
 			"name": "Windows 10",
-			"description": "For unit testing and as the base operating system",
+			"description": "As the development operating environment",
 			"url": "https://www.microsoft.com/en-us/software-download/windows10"
 		},
 		{
 			"name": "Ubuntu on Windows",
-			"description": "As the development operating environment",
+			"description": "For unit testing",
 			"url": "https://www.microsoft.com/en-us/store/p/ubuntu/9nblggh4msv6"
 		},
 		{
@@ -75,7 +81,7 @@
 		},
 		{
 			"name": "Blender",
-			"description": "For logo design and rendering",
+			"description": "For logo design and art rendering",
 			"url": "https://blender.org"
 		}
 	]
