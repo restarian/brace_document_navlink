@@ -1,7 +1,7 @@
 ## Making a difference with Brace document navlink
 
 ---
-### 'Brace
+### Brace Document Navlink help pages
 * [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
 * [Contributer code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributer_code_of_conduct.md)
 * **Guidelines for contributing**
@@ -9,6 +9,8 @@
 * [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
+  * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
+  * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
 ---
 

@@ -7,8 +7,8 @@
 	"bin": {},
 	"scripts": {
 		"test": "mocha",
-		"make_docs": "brace_document --navlink -r -i docs_raw -b docs --force-title --title 'Brace document navlink pages' --sort depth",
-		"make_docs_extra": "npm run make_docs --silent -- --batten-document-specification --batten-document-mocha"
+		"make_docs": "brace_document --link --link-dest README.md --link-path docs/synopsis.md --navlink -i docs -r --force-title --title \"Brace Document Navlink help pages\" --sort depth",
+		"make_docs_extra": "npm run make_docs --silent -- --specification --mocha"
 	},
 	"repository": {
 		"type": "git",
