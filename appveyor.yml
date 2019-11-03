@@ -4,11 +4,7 @@ image:
    - Visual Studio 2015
    - Ubuntu
 
-init:
-   - ps: $path = 'c:\projects\brace_document_navlink'
-   - sh: $path = '/projects/brace_document_navlink'
 
-clone_folder: $path 
 clone_depth: 1
 
 notifications:
