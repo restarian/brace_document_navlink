@@ -7,7 +7,7 @@
 	"bin": {},
 	"scripts": {
 		"test": "mocha",
-		"make_docs": "brace_document --link --link-dest README.md --link-path docs/synopsis.md --navlink -i docs -r --force-title --title \"Brace Document Navlink help pages\" --sort depth",
+		"make_docs": "brace_document --link --link-dest README.md --link-path docs/synopsis.md --navlink -i docs_raw -b docs -r --force-title --title \"Brace Document Navlink help pages\" --sort depth",
 		"make_docs_extra": "npm run make_docs --silent -- --specification --mocha"
 	},
 	"repository": {

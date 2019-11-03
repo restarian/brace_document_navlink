@@ -1,13 +1,11 @@
-## Synopsis 
-
-[![Build status](https://ci.appveyor.com/api/projects/status/vhqd52w3em2om16p/branch/master?svg=true)](https://ci.appveyor.com/project/restarian/brace-document-navlink/branch/master) [![Build Status](https://travis-ci.org/restarian/brace_document_navlink.svg?branch=master)](https://travis-ci.org/restarian/brace_document_navlink) [![Downloads](https://img.shields.io/npm/dm/brace_document_navlink.svg?svg=true)](https://npmjs.org/package/brace_document_navlink)
+## Synopsis
 
 | **The [Brace Suite]** | **[Ubuntu on Windows]**   |
 |:---------------------:|:-------------------------:|
 | ![Brace logo]         | ![Ubuntu on Windows logo] |         |
 
 [Brace Suite]: https://github.com/restarian/restarian/tree/master/brace/
-[Ubuntu on Windows]: https://www.microsoft.com/en-us/store/p/ubuntu/9nblggh4msv6?activetab=pivot%3aoverviewtab 
+[Ubuntu on Windows]: https://www.microsoft.com/en-us/store/p/ubuntu/9nblggh4msv6?activetab=pivot%3aoverviewtab
 
 [Ubuntu on Windows logo]: https://raw.githubusercontent.com/restarian/restarian/master/doc/image/ubuntu_windows_logo.png
 [Brace logo]: https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png
@@ -20,7 +18,7 @@
 **Bonuses:**
 * A fully asynchronous and idempotent API
 * Uses AMD (*asynchronous module definition*), syntax
-* Well commented, thoroughly unit tested and professional engineered scripting 
+* Well commented, thoroughly unit tested and professional engineered scripting
 * Tested for Linux and/or Windows environments
 
 **Caveats:**
@@ -40,7 +38,7 @@ Before using the Brace document navlink plugin a markdown page would look like t
 Some text about the project here
 ```
 
-After processing with the Brace document navlink plugin the navigation links would be added like below:
+  After processing a projects docuemnts with the Brace Document Navlink plugin the navigation links would be added to the pages like below:
 ```markdown
 
 ## The main page
@@ -54,7 +52,7 @@ After processing with the Brace document navlink plugin the navigation links wou
 * Specification
   * [License information](https://github.com/yourcompany/my_module/blob/master/docs/specification/license.md)
   * [Project Specs](https://github.com/yourcompany/my_module/blob/master/docs/specification/specification.md)
-    * Contributors 
+    * Contributors
       * [Someone](https://github.com/yourcompany/my_module/blob/master/docs/specification/contributors/someone.md)
       * [Another person](https://github.com/yourcompany/my_module/blob/master/docs/specification/contributors/another_person.md)
 
@@ -62,4 +60,3 @@ After processing with the Brace document navlink plugin the navigation links wou
 
 Some text about the project here
 ```
-
