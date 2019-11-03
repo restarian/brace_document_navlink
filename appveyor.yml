@@ -4,8 +4,13 @@ image:
    - Visual Studio 2015
    - Ubuntu
 
+init:
+   - ps: $path = 'c:\projects\brace_document_navlink'
+   - sh: $path = '/projects/brace_document_navlink'
+
+clone_folder: "$path"
 clone_depth: 1
-clone_folder: c:\projects\brace_document_navlink
+
 notifications:
 - provider: Email
   to:
@@ -19,9 +24,10 @@ notifications:
 environment:
   matrix:
     - nodejs_version: 6
-    - nodejs_version: 7
-    - nodejs_version: 8
-    - nodejs_version: 9
+    - nodejs_version: 9 
+    - nodejs_version: 10 
+    - nodejs_version: 11 
+    - nodejs_version: 12 
 
 install:
   - npm install
