@@ -1,12 +1,16 @@
 version: 1.0.{build}
 
+image:
+   - Visual Studio 2015
+   - Ubuntu
+
 clone_depth: 1
 clone_folder: c:\projects\brace_document_navlink
 notifications:
 - provider: Email
   to:
   - robertsteckroth@gmail.com
-  subject: A Brace document navlink build has failed.
+  subject: A Brace Document Navlink build has failed.
   on_build_success: false
   on_build_failure: true
   on_build_status_changed: false
