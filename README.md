@@ -25,6 +25,8 @@
 
 ---
 
+[![Build status](https://ci.appveyor.com/api/projects/status/vhqd52w3em2om16p/branch/master?svg=true)](https://ci.appveyor.com/project/restarian/brace-document-navlink/branch/master)[![Downloads](https://img.shields.io/npm/dm/brace_document_navlink.svg?svg=true)](https://npmjs.org/package/brace_document_navlink)
+
 **Bonuses:**
 * A fully asynchronous and idempotent API
 * Uses AMD (*asynchronous module definition*), syntax
