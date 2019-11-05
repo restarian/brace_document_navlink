@@ -5,7 +5,7 @@
 
 ### Brace Document Navlink help pages
 * [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
-* [Contributer code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributer_code_of_conduct.md)
+* [Contributor code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributor_code_of_conduct.md)
 * [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
 * [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
 * [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
@@ -30,7 +30,7 @@
 | Name | Action |
 | ---- | ------ |
  | test | ```mocha``` |
- | make_docs | ```brace_document --link --link-dest README.md --link-path docs/synopsis.md --navlink -i docs_raw -b docs -r --force-title --title "Brace Document Navlink help pages" --sort depth``` |
+ | make_docs | ```brace_document --link --link-dest ../Readme.md --link-path synopsis.md --navlink -i docs_raw -b docs -r --force-title --title "Brace Document Navlink help pages" --sort depth``` |
  | make_docs_extra | ```npm run make_docs --silent -- --specification --mocha``` |
 
 **Keywords**: *markdown*, *navigation*, *documentation*, *navbar*, *navlist*, *generation*

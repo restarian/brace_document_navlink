@@ -4,7 +4,6 @@ image:
    - Visual Studio 2015
    - Ubuntu
 
-
 clone_depth: 1
 
 notifications:
@@ -20,13 +19,16 @@ notifications:
 environment:
   matrix:
     - nodejs_version: 6
-    - nodejs_version: 9 
-    - nodejs_version: 10 
-    - nodejs_version: 11 
-    - nodejs_version: 12 
+    - nodejs_version: 9
+    - nodejs_version: 10
+    - nodejs_version: 11
+    - nodejs_version: 12
 
 install:
   - npm install
+
+init:
+  - npm install brace_document
 
 build: off
 

@@ -3,7 +3,7 @@
 ---
 ### Brace Document Navlink help pages
 * [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
-* **Contributer code of conduct**
+* **Contributor code of conduct**
 * [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
 * [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
 * [Synopsis](https://github.com/restarian/brace_document_navlink/blob/master/docs/synopsis.md)
@@ -69,10 +69,10 @@ further defined and clarified by project maintainers.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the [Brace document project team](mailto:robertsteckroth@gmail.com). All complaints 
-will be reviewed and investigated and will result in a response that is deemed 
-necessary and appropriate to the circumstances. The project team is obligated 
-to maintain confidentiality with regard to the reporter of an incident. Further 
+reported by contacting the [Restarian Technologies manager ](mailto:robertsteckroth@gmail.com). All complaints
+will be reviewed and investigated and will result in a response that is deemed
+necessary and appropriate to the circumstances. The project team is obligated
+to maintain confidentiality with regard to the reporter of an incident. Further
 details of specific enforcement policies may be posted separately.
 
 Project maintainers who do not follow or enforce the Code of Conduct in good
@@ -85,4 +85,3 @@ This Code of Conduct is adapted from the [Contributor Covenant][homepage], versi
 available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
 
 [homepage]: https://www.contributor-covenant.org
-
