@@ -1,6 +1,6 @@
-/* Copyright (C) 2018 Robert Steckroth <RobertSteckroth@gmail.com>
+/* Copyright (c) 2020 Robert Steckroth <RobertSteckroth@gmail.com> -- MIT license
 
-Brace document navlink resides under the MIT license
+Brace Document Navlink resides under the MIT license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9,9 +9,9 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-  Brace document navlink is module which generates  markdown page navigation links.
+Brace Document Navlink is a plugin for Brace Document which generates markdown page navigation links.
 
-  this file is a part of Brace document navlink  
+  this file is a part of Brace Document Navlink  
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
@@ -96,8 +96,8 @@ describe("using stop further progression methodology for dependencies in: "+path
 					this.findUrl(cwd, () => {
 
 						expect(this._origin_url).to.have.keys(Object.keys(require("url").parse("")))
-						expect(this.origin_url).to.include("https://my/cool/hosting/unit_test/blob/"+this.branch)
-						var branch = this.branch
+						expect(this.origin_url).to.include("https://my/cool/hosting/unit_test/blob/"+this.branch_name)
+						var branch = this.branch_name
 						utils.Spawn("git", ["rev-parse", "--abbrev-ref", "HEAD"], {cwd: cwd}, (code, stdout, stderr) => {
 
 							expect(stderr).to.be.empty
