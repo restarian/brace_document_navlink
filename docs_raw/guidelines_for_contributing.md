@@ -1,5 +1,5 @@
 # Brace Document Navlink
-## Making a difference with Brace document navlink
+## Making a difference with Brace Document Navlink
 
 ---
 ### Document pages

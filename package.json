@@ -33,7 +33,7 @@
 	"homepage": "https://github.com/restarian/brace_document_navlink#readme",
 	"dependencies": {
 		"amdefine": "^1.0.1",
-		"bracket_print": "^0.9.12",
+		"bracket_print": "^0.10.0",
 		"bracket_utils": "^0.3.0"
 	},
 	"devDependencies": {
