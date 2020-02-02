@@ -1,4 +1,7 @@
+# Brace Document Navlink
 ## Synopsis
+
+[![Build status](https://ci.appveyor.com/api/projects/status/vhqd52w3em2om16p/branch/master?svg=true)](https://ci.appveyor.com/project/restarian/brace-document-navlink/branch/master)[![Downloads](https://img.shields.io/npm/dm/brace_document_navlink.svg?svg=true)](https://npmjs.org/package/brace_document_navlink)
 
 | **The [Brace Suite]** | **[Ubuntu on Windows]**   |
 |:---------------------:|:-------------------------:|
@@ -25,16 +28,11 @@
 
 ---
 
-[![Build status](https://ci.appveyor.com/api/projects/status/vhqd52w3em2om16p/branch/master?svg=true)](https://ci.appveyor.com/project/restarian/brace-document-navlink/branch/master)[![Downloads](https://img.shields.io/npm/dm/brace_document_navlink.svg?svg=true)](https://npmjs.org/package/brace_document_navlink)
-
 **Bonuses:**
 * A fully asynchronous and idempotent API
 * Uses AMD (*asynchronous module definition*), syntax
 * Well commented, thoroughly unit tested and professional engineered scripting
-* Tested for Linux and/or Windows environments
-
-**Caveats:**
-* Requires nodejs version 6 or greater
+* Tested with Linux and Windows environments
 
 ### What this plugin does
 This program provides plugin functionality for [Brace Document](https://npmjs.org/packages/brace_document) which injects navigation links into markdown pages using a two line denotation formula. Documents are collected from a directory within the project and a set of navigation link urls are injected which reference the relative location of the documents. The link urls are fully qualified to allow access from locations other than *github.com*.

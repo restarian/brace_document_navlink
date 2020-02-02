@@ -1,5 +1,5 @@
-# Brace Suite
-## Restarian Technology
+# Brace Document Navlink
+## License information by Restarian Technology
 
 ----
 ### Brace Document Navlink help pages
@@ -13,6 +13,8 @@
   * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 
+----
+
 #### Brace Document Navlink is included in the Brace Suite.
 
 All works, media and writings contained within this project are licensed the same as Brace document license unless it is explicitly specified otherwise.
@@ -24,12 +26,6 @@ A project which is labeled with the Brace Suite is open-sourced under the **MIT*
 ___
 
 **Author**: Robert Steckroth, *Bust0ut* [<RobertSteckroth@gmail.com>](mailto:robertsteckroth@gmail.com)
-
-**Bonuses:**
-* Open-sourced under a liberal licensed
-
-**Caveats:**
-  * Does not come with tailored support
 
 ![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_medium.png)
 

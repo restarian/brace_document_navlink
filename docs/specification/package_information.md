@@ -15,7 +15,7 @@
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 ----
 
-**Version**: 1.1.5
+**Version**: 1.1.9
 
 **Description**: A Brace Document plugin which injects a navigation list into markdown documents
 
@@ -23,15 +23,16 @@
 
 **Dependencies**: [amdefine](https://npmjs.org/package/amdefine) [bracket_print](https://npmjs.org/package/bracket_print) [bracket_utils](https://npmjs.org/package/bracket_utils)
 
-**Development dependencies**: [brace_maybe](https://npmjs.org/package/brace_maybe) [mocha](https://npmjs.org/package/mocha) [chai](https://npmjs.org/package/chai) [requirejs](https://npmjs.org/package/requirejs)
+**Development dependencies**: [brace_maybe](https://npmjs.org/package/brace_maybe) [chai](https://npmjs.org/package/chai) [mocha](https://npmjs.org/package/mocha) [requirejs](https://npmjs.org/package/requirejs)
+
+**Optional Dependencies**: [brace_document](https://npmjs.org/package/brace_document) [brace_document_link](https://npmjs.org/package/brace_document_link) [brace_document_mocha](https://npmjs.org/package/brace_document_mocha) [brace_document_specification](https://npmjs.org/package/brace_document_specification)
 
 **Package scripts**:
 
 | Name | Action |
 | ---- | ------ |
  | test | ```mocha``` |
- | make_docs | ```brace_document --link --link-dest ../Readme.md --link-path synopsis.md --navlink -i docs_raw -b docs -r --force-title --title "Brace Document Navlink help pages" --sort depth``` |
- | make_docs_extra | ```npm run make_docs --silent -- --specification --mocha``` |
+ | make_docs | ```brace_document --link --link-dest ../Readme.md --link-path synopsis.md --navlink -i docs_raw -b docs -r --force-title --title "Brace Document Navlink help pages" --sort depth --specification --mocha``` |
 
 **Keywords**: *markdown*, *navigation*, *documentation*, *navbar*, *navlist*, *generation*
 

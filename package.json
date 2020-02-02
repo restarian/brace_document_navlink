@@ -4,11 +4,9 @@
 	"priority": "20",
 	"description": "A Brace Document plugin which injects a navigation list into markdown documents",
 	"main": "lib/brace_document_navlink.js",
-	"bin": {},
 	"scripts": {
 		"test": "mocha",
-		"make_docs": "brace_document --link --link-dest ../Readme.md --link-path synopsis.md --navlink -i docs_raw -b docs -r --force-title --title \"Brace Document Navlink help pages\" --sort depth",
-		"make_docs_extra": "npm run make_docs --silent -- --specification --mocha"
+		"make_docs": "brace_document --link --link-dest ../Readme.md --link-path synopsis.md --navlink -i docs_raw -b docs -r --force-title --title \"Brace Document Navlink help pages\" --sort depth --specification --mocha"
 	},
 	"repository": {
 		"type": "git",
@@ -33,16 +31,21 @@
 	"homepage": "https://github.com/restarian/brace_document_navlink#readme",
 	"dependencies": {
 		"amdefine": "^1.0.1",
-		"bracket_print": "^0.10.0",
+		"bracket_print": "^0.10.4",
 		"bracket_utils": "^0.3.0"
 	},
 	"devDependencies": {
 		"brace_maybe": "^0.1.3",
-		"mocha": "^5.0.0",
-		"chai": "^4.1.2",
+		"chai": "^4.2.0",
+		"mocha": "^7.0.1",
 		"requirejs": "^2.3.5"
 	},
-	"optionalDependencies": {},
+	"optionalDependencies": {
+		"brace_document": "^1.1.10",
+		"brace_document_link": "^1.1.9",
+		"brace_document_mocha": "^1.1.0",
+		"brace_document_specification": "^1.2.2"
+	},
 	"technologies": [
 		{
 			"name": "VIM",
