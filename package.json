@@ -1,6 +1,6 @@
 {
 	"name": "brace_document_navlink",
-	"version": "1.1.9",
+	"version": "1.1.10",
 	"priority": "20",
 	"description": "A Brace Document plugin which injects a navigation list into markdown documents",
 	"main": "lib/brace_document_navlink.js",
