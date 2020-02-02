@@ -14,7 +14,17 @@
 [Brace logo]: https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png
 
 ---
-### Document pages
+### Brace Document Navlink help pages
+* [Available options and usage](https://github.com/restarian/brace_document_navlink/blob/master/docs/available_options_and_usage.md)
+* [Contributor code of conduct](https://github.com/restarian/brace_document_navlink/blob/master/docs/contributor_code_of_conduct.md)
+* [Guidelines for contributing](https://github.com/restarian/brace_document_navlink/blob/master/docs/guidelines_for_contributing.md)
+* [How documents are modified](https://github.com/restarian/brace_document_navlink/blob/master/docs/how_documents_are_modified.md)
+* **Synopsis**
+* Specification
+  * [License information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/license_information.md)
+  * [Package information](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/package_information.md)
+  * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
+
 
 ---
 
@@ -45,16 +55,6 @@ Some text about the project here
 
 ---
 ### Document pages
-* **Synopsis**
-* [Command usage](https://github.com/yourcompany/my_module/blob/master/docs/usage.md)
-* Development
-  * [The todo sheet ](https://github.com/yourcompany/my_module/blob/master/docs/development/todo.md)
-* Specification
-  * [License information](https://github.com/yourcompany/my_module/blob/master/docs/specification/license.md)
-  * [Project Specs](https://github.com/yourcompany/my_module/blob/master/docs/specification/specification.md)
-    * Contributors
-      * [Someone](https://github.com/yourcompany/my_module/blob/master/docs/specification/contributors/someone.md)
-      * [Another person](https://github.com/yourcompany/my_module/blob/master/docs/specification/contributors/another_person.md)
 
 ---
 

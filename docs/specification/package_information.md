@@ -15,7 +15,7 @@
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 ----
 
-**Version**: 1.1.9
+**Version**: 1.1.10
 
 **Description**: A Brace Document plugin which injects a navigation list into markdown documents
 
@@ -32,7 +32,7 @@
 | Name | Action |
 | ---- | ------ |
  | test | ```mocha``` |
- | make_docs | ```brace_document --link --link-dest ../Readme.md --link-path synopsis.md --navlink -i docs_raw -b docs -r --force-title --title "Brace Document Navlink help pages" --sort depth --specification --mocha``` |
+ | make_docs | ```brace_document --link --link-dest ../Readme.md --link-path ../docs/synopsis.md --navlink -i docs_raw -b docs -r --force-title --title "Brace Document Navlink help pages" --sort depth --specification --mocha``` |
 
 **Keywords**: *markdown*, *navigation*, *documentation*, *navbar*, *navlist*, *generation*
 
