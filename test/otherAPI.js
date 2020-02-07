@@ -49,19 +49,6 @@ describe("using stop further progression methodology for dependencies in: "+path
 			done()
 		})
 
-		/*
-		it("git is available in the system as a program", function(done) {
-			it_will.stop = true 
-			utils.Spawn("git", [], function() {
-				it_will.stop = false 
-				done()
-			}, function() {
-				expect(false, "git is not available as a system program").to.be.true
-				done()
-			})
-		})
-		*/
-
 	})
 
 	describe("the other API members such as", function(done) {
@@ -80,22 +67,22 @@ describe("using stop further progression methodology for dependencies in: "+path
 				var nav = navlink()
 				expect(nav.sentenceConvert("cooljoes")).to.equal("Cooljoes")
 				expect(nav.sentenceConvert("cool joes")).to.equal("Cool joes")
-				expect(nav.sentenceConvert("cool Joes")).to.equal("Cool Joes")
-				expect(nav.sentenceConvert("Cool Joes")).to.equal("Cool Joes")
-				expect(nav.sentenceConvert("CoolJoes")).to.equal("CoolJoes")
-				expect(nav.sentenceConvert(" CoolJoes")).to.equal("CoolJoes")
-				expect(nav.sentenceConvert(" CoolJoes\n ")).to.equal("CoolJoes")
+				expect(nav.sentenceConvert("cool Joes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert("Cool Joes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert("CoolJoes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert(" CoolJoes")).to.equal("Cool joes")
+				expect(nav.sentenceConvert(" CoolJoes\n ")).to.equal("Cool joes")
 
-				expect(nav.sentenceConvert("Cool JoesHere   man")).to.equal("Cool JoesHere man")
-				expect(nav.sentenceConvert("Cool_Joes_\n_here-man")).to.equal("Cool Joes_here-man")
-				expect(nav.sentenceConvert("-Cool Joes_here-man")).to.equal("-Cool Joes here-man")
-				expect(nav.sentenceConvert("cool,_Joes,_man")).to.equal("Cool, Joes, man")
+				expect(nav.sentenceConvert("Cool JoesHere   man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert("Cool_Joes_\n_here-man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert("-Cool Joes_here-man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert("cool,_Joes,_man")).to.equal("Cool, joes, man")
 
-				expect(nav.sentenceConvert("--_Cool Joes_here-man")).to.equal("-- Cool Joes here-man")
-				expect(nav.sentenceConvert("--_Cool Joes__here-man")).to.equal("-- Cool Joes_here-man")
-				expect(nav.sentenceConvert(".Cool 	\tJoes+here-man ")).to.equal(".Cool Joes+here-man")
-				expect(nav.sentenceConvert("  .!@Cool$@#\n*&( Joes+here()()(-man")).to.equal(".!@Cool$@#*&( Joes+here()()(-man")
-				expect(nav.sentenceConvert(".!  @Cool\t[]&#*(\n\t\r\t\r\n$@#*&( Joes+here()()(-man")).to.equal(".! @Cool []&#*( $@#*&( Joes+here()()(-man")
+				expect(nav.sentenceConvert("--_Cool Joes_here-man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert("--_Cool Joes__here-man")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert(".Cool 	\tJoes+here.man ")).to.equal("Cool joes here man")
+				expect(nav.sentenceConvert("  .!@Cool$@#\n*&( Joes+here()()(-man  ")).to.equal("!@cool$@ &( joes here()()( man")
+				expect(nav.sentenceConvert(".!  @Cool\t[]&#*(\n\t\r\t\r\n$@#*&( Joes+here()()(-man")).to.equal("! @cool []& ( $@ &( joes here()()( man")
 				done()
 				}, function(error) { expect(false, error).to.be.true; done() })
 		})

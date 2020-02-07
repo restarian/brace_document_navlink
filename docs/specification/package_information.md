@@ -15,13 +15,13 @@
   * [Unit test output](https://github.com/restarian/brace_document_navlink/blob/master/docs/specification/unit_test_output.md)
 ----
 
-**Version**: 1.1.10
+**Version**: 1.1.11
 
 **Description**: A Brace Document plugin which injects a navigation list into markdown documents
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 
-**Dependencies**: [amdefine](https://npmjs.org/package/amdefine) [bracket_print](https://npmjs.org/package/bracket_print) [bracket_utils](https://npmjs.org/package/bracket_utils)
+**Dependencies**: [bracket_print](https://npmjs.org/package/bracket_print) [bracket_utils](https://npmjs.org/package/bracket_utils)
 
 **Development dependencies**: [brace_maybe](https://npmjs.org/package/brace_maybe) [chai](https://npmjs.org/package/chai) [mocha](https://npmjs.org/package/mocha) [requirejs](https://npmjs.org/package/requirejs)
 
